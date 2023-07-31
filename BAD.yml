@@ -1,0 +1,12 @@
+name: "BAD"
+faction: industrial_arms
+base: military
+advantage: "Psionic Talent"
+commander:
+  name: "Ben Packer"
+  stats:
+    acuity: 15
+    combat: 16
+    dexterity: 14
+    fortitude: 17
+    psionic: 0
