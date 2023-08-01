@@ -1,6 +1,11 @@
 name: "BAD"
-faction: industrial_arms
-base: military_command
+faction: Industrial_Arms
+base:
+  baseType: Military_Command
+  baseUpgrades:
+    - Combat_Training_Facility
+    - Weapons_Depot
+    - Advanced_Cloning_Facility
 advantage: "Psionic Talent"
 commander:
   name: "Ben Packer"
@@ -9,9 +14,10 @@ commander:
   dexterity: 14
   fortitude: 17
   psionics: 0
+  weapons:
+    - Sniper_Rifle
   equipment:
-    - sniper_rifle
-    - scanner
+    - Scanner
 members:
   - name: "Shane Sanderson"
     acuity: 13
@@ -19,36 +25,39 @@ members:
     dexterity: 14
     fortitude: 12
     psionics: 0
-    equipment:
-      - assault_rifle
+    weapons:
+      - Assault_Rifle
   - name: "Moose Trengganun"
     acuity: 11
     combat: 16
     dexterity: 13
     fortitude: 15
     psionics: 0
+    weapons:
+      - Heavy_Repeating_Rifle
     equipment:
-      - heavy_repeating_rifle
-      - sighting_HUD
+      - Sighting_HUD
   - name: "Colin Marcus"
     acuity: 10
     combat: 13
     dexterity: 14
     fortitude: 13
     psionics: 0
+    weapons:
+      - Assault_Rifle
     equipment:
-      - assault_rifle
-      - sighting_HUD
+      - Sighting_HUD
   - name: "Casey Taylor"
     acuity: 12
     combat: 14
     dexterity: 11
     fortitude: 12
     psionics: 14
+    weapons:
+      - Pistol
     equipment:
-      - pistol
-      - shield
+      - Shield
     abilities:
-      - thrust
-      - healing
-      - invisibility
+      - Thrust
+      - Healing
+      - Invisibility

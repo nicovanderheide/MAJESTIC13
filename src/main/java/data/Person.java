@@ -1,7 +1,8 @@
 package data;
 
 import data.enums.Abilities;
-import data.enums.Equipment;
+import data.enums.Gear;
+import data.enums.Weapon;
 import lombok.Data;
 
 import java.util.Set;
@@ -15,14 +16,14 @@ public class Person {
     private int fortitude;
     private int psionics;
 
-    private Set<String> abilities;
-    private Set<String> equipment;
-
-    public int getDamageBonus() {
-        return getCombat() >= 14 ? 1 : 0;
-    }
+    private Set<Abilities> abilities;
+    private Set<Weapon> weapons;
+    private Set<Gear> equipment;
 
     public int getDefense() {
+        if (null != equipment && equipment.contains(Gear.Shield)) {
+            return 31;
+        }
         return 30;
     }
 
@@ -45,6 +46,9 @@ public class Person {
         }
         return sb.toString();
     }
+    public int getDamageBonus() {
+        return getCombat() >= 14 ? 1 : 0;
+    }
 
     public String getDexterityBonus() {
         StringBuilder sb = new StringBuilder();
@@ -64,7 +68,10 @@ public class Person {
 
     public String getPsionicsBonus() {
         StringBuilder sb = new StringBuilder();
-        sb.append("1 ability; ");
+
+        if (psionics > 0) {
+            sb.append("1 ability; ");
+        }
         if (psionics >= 10) {
             sb.append("+2; ");
         }

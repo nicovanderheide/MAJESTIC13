@@ -6,16 +6,16 @@ import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @AllArgsConstructor
-public enum Gear implements Equipment {
-    scanner("+2 Acuity vs Hidden"),
-    targeting_assist("+2 combat"),
-    sighting_HUD("ignore cover"),
-    shield("defense +1")
+public enum Gear {
+    Scanner("+2 Acuity vs Hidden"),
+    Targeting_Assist("+2 combat"),
+    Sighting_HUD("ignore cover"),
+    Shield("defense +1")
     ;
 
     private final String output;
 
     public String toString() {
-        return String.format(" - %s: %s", StringUtils.capitalize(name().replaceAll("_", " ")), getOutput());
+        return String.format(" - %s: %s", name().replaceAll("_", " "), getOutput());
     }
 }

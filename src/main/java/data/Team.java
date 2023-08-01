@@ -1,6 +1,7 @@
 package data;
 
-import data.enums.Base;
+import data.enums.BaseType;
+import data.enums.BaseUpgrade;
 import data.enums.Faction;
 import lombok.Data;
 
@@ -18,6 +19,9 @@ public class Team {
 
     public int calculateDmg(Person member) {
         int dmg= faction.getDamageBonus();
+        if (base.getBaseUpgrades().contains(BaseUpgrade.Weapons_Depot)) {
+            dmg += 1;
+        }
         dmg += member.getDamageBonus();
         return dmg;
     }

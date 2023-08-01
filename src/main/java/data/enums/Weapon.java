@@ -6,16 +6,16 @@ import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @AllArgsConstructor
-public enum Weapon implements Equipment {
-    pistol("1D6+{dmgBonus}"),
-    assault_rifle("2D6+{dmgBonus}"),
-    sniper_rifle("1D6+2+{dmgBonus} moving/ 2D6+4+{dmgBonus} stationary"),
-    heavy_repeating_rifle("-2 Combat, 3D6+{dmgBonus}"),
+public enum Weapon {
+    Pistol("1D6+{dmgBonus}"),
+    Assault_Rifle("2D6+{dmgBonus}"),
+    Sniper_Rifle("1D6+2+{dmgBonus} moving/ 2D6+4+{dmgBonus} stationary"),
+    Heavy_Repeating_Rifle("-2 Combat, 3D6+{dmgBonus}"),
     ;
 
     private final String output;
 
     public String toString() {
-        return String.format(" - %s: %s", StringUtils.capitalize(name().replaceAll("_", " ")), getOutput());
+        return String.format(" - %s: %s", name().replaceAll("_", " "), getOutput());
     }
 }

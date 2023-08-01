@@ -1,6 +1,7 @@
 package parser;
 
 import data.Team;
+import data.enums.BaseUpgrade;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -13,7 +14,11 @@ public class CrewReader {
     public static Team read(final Path file) throws IOException {
         try (InputStream inputStream = Files.newInputStream(file)) {
             Yaml yaml = new Yaml(new Constructor(Team.class));
-            return yaml.load(inputStream);
+            Team team = yaml.load(inputStream);
+            while (team.getBase().getBaseUpgrades().size() < team.getBase().getBaseType().getMaxUpgrades()) {
+                team.getBase().getBaseUpgrades().add(BaseUpgrade.Empty);
+            }
+            return team;
         }
     }
 }
