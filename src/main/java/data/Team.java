@@ -1,5 +1,7 @@
 package data;
 
+import data.enums.Base;
+import data.enums.Faction;
 import lombok.Data;
 
 import java.util.List;
@@ -7,11 +9,16 @@ import java.util.List;
 @Data
 public class Team {
     private String name;
-    private String faction;
-    private String factionBonus;
+    private Faction faction;
     private String advantage;
-    private String base;
+    private Base base;
 
     private Commander commander;
     private List<Member> members;
+
+    public int calculateDmg(Person member) {
+        int dmg= faction.getDamageBonus();
+        dmg += member.getDamageBonus();
+        return dmg;
+    }
 }
