@@ -1,0 +1,68 @@
+name: "BAD"
+rating: 1
+faction: Roughnecks
+base:
+  baseType: Military_Command
+  baseUpgrades:
+    - Empty
+advantage: Psionic_Talent
+commander:
+  name: "Rico, Johnny"
+  exp: 0
+  acuity: 13
+  combat: 16
+  dexterity: 14
+  fortitude: 12
+  psionics: 0
+  weapons:
+    - Assault_Rifle
+  equipment:
+    - Advances_Body_Armor
+members:
+  - name: "'Dizzy' Flores"
+    exp: 0
+    acuity: 10
+    combat: 13
+    dexterity: 13
+    fortitude: 15
+    psionics: 0
+    weapons:
+      - Pistol
+    equipment:
+      - Shield
+  - name: "Carmen Ibanez"
+    exp: 0
+    acuity: 12
+    combat: 10
+    dexterity: 10
+    fortitude: 13
+    psionics: 0
+    weapons:
+      - Sniper_Rifle
+    equipment:
+      - Medical_Kit
+  - name: "Carl Jenkins"
+    exp: 0
+    acuity: 7
+    combat: 15
+    dexterity: 12
+    fortitude: 8
+    psionics: 14
+    weapons:
+      - Flash_Bang_Grenade
+    equipment:
+    abilities:
+      - Spike
+      - Healing
+      - Thrust
+  - name: "Ace Levy"
+    exp: 0
+    acuity: 15
+    combat: 17
+    dexterity: 15
+    fortitude: 12
+    psionics: 0
+    weapons:
+      - Heavy_Repeating_Rifle
+    equipment:
+      - Targeting_Assist
