@@ -15,7 +15,10 @@ public class CrewGenerator {
         final Path path = Paths.get(".");
         try (Stream<Path> paths = walk(path)) {
             paths.filter(f -> f.toString().endsWith(".yml"))
-                    .forEach(file -> {final RosterBuilder builder = new RosterBuilder(); builder.create(file);});
+                    .forEach(file -> {
+                        final RosterBuilder builder = new RosterBuilder();
+                        builder.create(file);
+                    });
         }
     }
 }
