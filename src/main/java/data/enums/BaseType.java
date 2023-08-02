@@ -36,7 +36,7 @@ public enum BaseType {
 
     public String getDisallowed() {
         StringBuilder sb = new StringBuilder();
-        for (BaseUpgrade upgrade: disallowedUpgrades) {
+        for (BaseUpgrade upgrade : disallowedUpgrades) {
             sb.append(upgrade.getName());
             sb.append("; ");
         }
