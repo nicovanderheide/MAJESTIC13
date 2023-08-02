@@ -2,7 +2,6 @@ package data.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @AllArgsConstructor
@@ -10,7 +9,10 @@ public enum Gear {
     Scanner("+2 Acuity vs Hidden"),
     Targeting_Assist("+2 combat"),
     Sighting_HUD("ignore cover"),
-    Shield("defense +1")
+    Shield("defense +1"),
+    Advances_Body_Armor("-1 dmg"),
+    Medical_Kit("heal 1D6+4 1\""),
+
     ;
 
     private final String output;
