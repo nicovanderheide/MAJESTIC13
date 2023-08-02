@@ -14,9 +14,11 @@ import data.Base;
 import data.Member;
 import data.Person;
 import data.Team;
+import data.enums.Abilities;
 import data.enums.BaseType;
 import data.enums.BaseUpgrade;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import parser.CrewReader;
 
 import java.io.IOException;
@@ -44,6 +46,7 @@ public class RosterBuilder {
     }
 
     private void addTeamPage(Document document, Team team) {
+
         document.add(createTeamTable(team));
         document.add(spacer(1));
         document.add(addPersonTable(team, team.getCommander()));
@@ -60,12 +63,18 @@ public class RosterBuilder {
     private void addBaseDefinitionPage(Document document, Base base) {
         document.add(createBaseTypeTable(base.getBaseType()));
 
+        int upgrades = 1;
         for (BaseUpgrade upgrade : base.getBaseUpgrades()) {
             document.add(spacer(1));
-            if (!base.getBaseType().getDisallowedUpgrades().contains(upgrade)) {
-                document.add(addBaseUpgrade(upgrade));
+            if (upgrades <= base.getBaseType().getMaxUpgrades()) {
+                if (base.getBaseType().getDisallowedUpgrades().contains(upgrade)) {
+                    document.add(addBaseUpgrade(upgrade).setFontColor(ColorConstants.RED));
+                } else {
+                    ++upgrades;
+                    document.add(addBaseUpgrade(upgrade));
+                }
             } else {
-                document.add(addBaseUpgrade(upgrade).setFontColor(ColorConstants.RED));
+                document.add(addBaseUpgrade(upgrade).setFontColor(ColorConstants.BLUE));
             }
         }
     }
@@ -89,20 +98,21 @@ public class RosterBuilder {
     }
 
     private Table createTeamTable(final Team team) {
-        Table teamTable = new Table(2).setBorder(Border.NO_BORDER).useAllAvailableWidth();
+        Table teamTable = new Table(3).setBorder(Border.NO_BORDER).useAllAvailableWidth();
         teamTable.addCell(createCell(String.format("TEAM NAME: %s", team.getName()), 1));
         teamTable.addCell(createCell(String.format("FACTION: %s", team.getFaction().getName()), 1));
+        teamTable.addCell(createCell("TEAM RATING: " + team.getRating(), 1));
         teamTable.startNewRow();
-        teamTable.addCell(createCell(String.format("FACTION BONUS: %s", team.getFaction().getOutput()), 2));
-        teamTable.addCell(createCell(String.format("ADVANTAGE: %s", team.getAdvantage()), 2));
-        teamTable.addCell(createCell(String.format("BASE BONUS: %s", team.getBase().getBaseType().getOutput()), 2));
+        teamTable.addCell(createCell(String.format("FACTION BONUS: %s", team.getFaction().getOutput()), 3));
+        teamTable.addCell(createCell(String.format("ADVANTAGE: %s", team.getAdvantage()), 3));
+        teamTable.addCell(createCell(String.format("BASE BONUS: %s", team.getBase().getBaseType().getOutput()), 3));
 
         return teamTable;
     }
 
     private Table addPersonTable(final Team team, Person person) {
         Table table = new Table(UnitValue.createPointArray(new float[]{100, 100, 100, 100, 100})).setBorder(Border.NO_BORDER).useAllAvailableWidth();
-        table.addCell(createCell("NAME: " + person.getName(), 2));
+        table.addCell(createCell("NAME: " + person.getName() + " (" + person.getExp() + " exp.)", 2));
         table.addCell(createCell("DEFENSE: " + person.getDefense(), 2));
         table.addCell(createCell("MAX HP: " + person.getMaxHP() + "   CURRENT: ", 2));
 
@@ -116,9 +126,9 @@ public class RosterBuilder {
 
         table.addCell(addEquipment(team, person));
 
-        if (person.getPsionics() != 0 && !person.getAbilities().isEmpty()) {
+        if (person.getActualPsionics() != 0 && !person.getAbilities().isEmpty()) {
             table.startNewRow();
-            table.addCell(addAbilities(team, person));
+            table.addCell(addAbilities(person));
         }
 
         return table;
@@ -126,45 +136,46 @@ public class RosterBuilder {
 
     private Cell addAcuity(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("ACUITY: " + person.getAcuity()));
+        cell.add(createCell("ACUITY: " + person.getActualAcuity()));
         cell.add(createCell(person.getAcuityBonus()));
         return cell;
     }
 
     private Cell addCombat(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("COMBAT: " + person.getCombat()));
+        cell.add(createCell("COMBAT: " + person.getActualCombat()));
         cell.add(createCell(person.getCombatBonus()));
         return cell;
     }
 
     private Cell addDexterity(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("DEXTERITY: " + person.getDexterity()));
+        cell.add(createCell("DEXTERITY: " + person.getActualDexterity()));
         cell.add(createCell(person.getDexterityBonus()));
         return cell;
     }
 
     private Cell addFortitude(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("FORTITUDE: " + person.getFortitude()));
+        cell.add(createCell("FORTITUDE: " + person.getActualFortitude()));
         cell.add(createCell(person.getFortitudeBonus()));
         return cell;
     }
 
     private Cell addPsionics(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("PSIONICS: " + person.getPsionics()));
+        cell.add(createCell("PSIONICS: " + person.getActualPsionics()));
         cell.add(createCell(person.getPsionicsBonus()));
         return cell;
     }
 
     private Cell addEquipment(Team team, Person person) {
         int dmgBonus = team.calculateDmg(person);
+        String extraDice = (person.getActualCombat() >= 24) ? "+1D6" : "";
         Cell cell = new Cell(1, 5);
         cell.add(new Paragraph("GEAR: "));
         if (person.getWeapons() != null) {
-            person.getWeapons().forEach((weapon) -> cell.add(new Paragraph(weapon.toString().replace("{dmgBonus}", String.valueOf(dmgBonus)))));
+            person.getWeapons().forEach((weapon) -> cell.add(new Paragraph(StringUtils.replaceEach(weapon.toString(), new String[]{"{dmgBonus}", "{extra}"}, new String[]{String.valueOf(dmgBonus), extraDice}))));
         }
         if (person.getEquipment() != null) {
             person.getEquipment().forEach((equipment) -> cell.add(new Paragraph(equipment.toString())));
@@ -173,11 +184,18 @@ public class RosterBuilder {
         return cell;
     }
 
-    private Cell addAbilities(Team team, Person person) {
+    private Cell addAbilities(Person person) {
         Cell cell = new Cell(1, 5);
         cell.add(new Paragraph("ABILITIES: "));
+        int abilities = 0;
+        for (Abilities ability : person.getAbilities()) {
+            if (++abilities > person.getPsionicAbilities()) {
+                cell.add(new Paragraph(ability.toString()).setFontColor(ColorConstants.BLUE));
+            } else {
+                cell.add(new Paragraph(ability.toString()));
+            }
 
-        person.getAbilities().forEach((ability) -> cell.add(new Paragraph(ability.toString())));
+        }
 
         return cell;
     }
