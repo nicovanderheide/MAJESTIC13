@@ -5,13 +5,16 @@ import data.enums.Faction;
 import data.enums.Gear;
 import data.enums.Weapon;
 import lombok.Data;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 @Data
-public class Person {
+public class Person implements Comparable<Person> {
     private Faction teamFaction;
 
     private String name;
@@ -22,6 +25,7 @@ public class Person {
     private int psionics;
     private int exp = 0;
 
+    private List<String> injuries = new ArrayList<>();
     private Set<Abilities> abilities = new HashSet<>();
     private Set<Weapon> weapons = new HashSet<>();
     private Set<Gear> equipment = new HashSet<>();
@@ -148,5 +152,15 @@ public class Person {
             number += 1;
         }
         return number;
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        if (this.getActualAcuity() < o.getActualAcuity()) {
+            return 1;
+        } else if (this.getActualAcuity() > o.getActualAcuity()) {
+            return -1;
+        }
+        return 0;
     }
 }

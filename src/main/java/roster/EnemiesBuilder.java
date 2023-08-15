@@ -55,7 +55,7 @@ public class EnemiesBuilder {
         table.addCell(createCell("MAX HP: " + enemy.getHealth() + "   RAGE: " + enemy.getRage(), 3));
 
         table.startNewRow();
-        table.addCell(addStat("ACU", enemy.getAcuity()));
+        table.addCell(addActivations(enemy.getAcuity()));
         table.addCell(addStat("COM", enemy.getCombat()));
         table.addCell(addStat("DEX", enemy.getDexterity()));
         table.addCell(addStat("FOR", enemy.getFortitude()));
@@ -67,6 +67,11 @@ public class EnemiesBuilder {
         table.addCell(addActions(enemy));
 
         return table;
+    }
+    private Cell addActivations(final int number) {
+        Cell cell = new Cell();
+        cell.add(createCell(String.format("ACU: %s | %s", number, number-10)));
+        return cell;
     }
 
     private Cell addStat(final String stat, final int number) {
@@ -148,7 +153,11 @@ public class EnemiesBuilder {
                 table.addCell("If the Monstrosity starts its activation and there are no visible enemies (either because they are all Hidden or because they are all out of line of sight), it will attempt to spot the Hidden enemies (see Hidden, page 28) as an action, as opposed to as part of an attack. If successful, it will then move as close as possible to the now-visible enemy or enemies within its line of sight, seeking to end within 1” of as many enemies as possible. If only one is visible, it will move to within 1” of the now closest visible enemy. If it fails to spot any Hidden enemies, or all enemies are out of line of sight, it will move in a random direction up to its full movement distance. If it has additional actions (because it is In Extremis) and it has spotted an enemy, it will use these actions to make attacks against that enemy as per Step 2 above.");
                 break;
             case Ravager:
-                cell.add(new Paragraph("A Ravager first activates according to its Acuity. A Ravager activates again at its Acuity -10. A Ravager will also activate again if an enemy ranged attack misses. In this event, it will make a bonus activation immediately after the conclusion of the activating model that missed and it will attack the target that missed with its Basic Attack. A Ravager may never activate more than 3 times during any turn."));
+                cell.add(new Paragraph("A Ravager first activates according to its Acuity. " +
+                        "A Ravager activates again at its Acuity -10. " +
+                        "A Ravager will also activate again if an enemy ranged attack misses. " +
+                        "In this event, it will make a bonus activation immediately after the conclusion of the activating model that missed and it will attack the target that missed with its Basic Attack. " +
+                        "A Ravager may never activate more than 3 times during any turn."));
 
                 table.addCell("1.");
                 table.addCell("If the Ravager starts its activation In Extremis, it will suffer 2D6 damage and take an extra action during its activation. It will use this action as per the order below.");
@@ -169,7 +178,12 @@ public class EnemiesBuilder {
 
                 break;
             case Stalker:
-                cell.add(new Paragraph("A Stalker first activates according to its Acuity. A Stalker activates again at its Acuity -10. A Stalker will also activate again if it is Hidden and an enemy successfully reveals the Stalker from Hidden. Once the team member that successfully spotted the Stalker has completed their turn, the Stalker will make a bonus activation. A Stalker may never activate more than 3 times during any turn."));
+                cell.add(new Paragraph("A Stalker first activates according to its Acuity. " +
+                        "A Stalker activates again at its Acuity -10. " +
+                        "A Stalker will also activate again if it is Hidden and an enemy successfully reveals the Stalker from Hidden. " +
+                        "Once the team member that successfully spotted the Stalker has completed their turn, the Stalker will make a bonus activation. " +
+                        "A Stalker may never activate more than 3 times during any turn."));
+
                 table.addCell("1.");
                 table.addCell("If the Stalker starts its activation In Extremis, it will suffer 2D6 damage and take an extra action during its activation. It will use this action as per the order below.");
                 table.addCell("2.");

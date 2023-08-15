@@ -11,7 +11,6 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.properties.UnitValue;
 import data.Base;
-import data.Member;
 import data.Person;
 import data.Team;
 import data.enums.Abilities;
@@ -49,14 +48,12 @@ public class RosterBuilder {
 
         document.add(createTeamTable(team));
         document.add(spacer(1));
-        document.add(addPersonTable(team, team.getCommander()));
-
-        document.add(spacer(1));
         if (team.getMembers() != null) {
-            for (Member member : team.getMembers()) {
+            team.getMembers().stream().sorted().forEach(member -> {
                 document.add(addPersonTable(team, member));
                 document.add(spacer(1));
-            }
+            });
+
         }
     }
 
@@ -68,32 +65,39 @@ public class RosterBuilder {
             document.add(spacer(1));
             if (upgrades <= base.getBaseType().getMaxUpgrades()) {
                 if (base.getBaseType().getDisallowedUpgrades().contains(upgrade)) {
-                    document.add(addBaseUpgrade(upgrade).setFontColor(ColorConstants.RED));
+                    document.add(addBaseUpgrade(base, upgrade).setFontColor(ColorConstants.RED));
                 } else {
                     ++upgrades;
-                    document.add(addBaseUpgrade(upgrade));
+                    document.add(addBaseUpgrade(base, upgrade));
                 }
             } else {
-                document.add(addBaseUpgrade(upgrade).setFontColor(ColorConstants.BLUE));
+                document.add(addBaseUpgrade(base, upgrade).setFontColor(ColorConstants.BLUE));
             }
         }
     }
 
-    private Table addBaseUpgrade(BaseUpgrade upgrade) {
-        Table table = new Table(1).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth();
-        table.addCell(createCell("UPGRADE: " + upgrade.getName()).setBorder(Border.NO_BORDER).setBorderBottom(new SolidBorder(0.5f)));
-        table.addCell(createCell("BENEFITS: " + upgrade.getBenefits()).setHeight(UnitValue.createPointValue(30)).setBorder(Border.NO_BORDER));
+    private Table addBaseUpgrade(Base base, BaseUpgrade upgrade) {
+        Table table = new Table(1).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth().setKeepTogether(true);
+        table.addCell(createCell(upgrade.getName()).setBold().setBorder(Border.NO_BORDER).setBorderBottom(new SolidBorder(0.5f)));
+        table.addCell(createCell(upgrade.getBenefits()).setBorder(Border.NO_BORDER));
+        if (upgrade.equals(BaseUpgrade.Advanced_Research_Station)) {
+            table.addCell(createCell("UNLOCKED UPGRADES:").setBold().setBorder(Border.NO_BORDER));
+            base.getAdvancedResearchUpgrades().forEach(advancedResearchUpgrade -> {
+                table.addCell(createCell(advancedResearchUpgrade.getName()).setBold().setBorder(Border.NO_BORDER));
+                table.addCell(createCell(advancedResearchUpgrade.getDescription()).setBorder(Border.NO_BORDER));
+            });
+        }
         return table;
     }
 
     private Table createBaseTypeTable(BaseType base) {
         Table table = new Table(2).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth();
-        table.addCell(createCell("STARTING BASE TYPE: " + base.toString()).setBorder(Border.NO_BORDER));
-        table.addCell(createCell("MAX UPGRADES: " + base.getMaxUpgrades()).setBorder(Border.NO_BORDER));
+        table.addCell(createCell(String.format("STARTING BASE TYPE: %s", base)).setBorder(Border.NO_BORDER));
+        table.addCell(createCell(String.format("MAX UPGRADES: %s", base.getMaxUpgrades())).setBorder(Border.NO_BORDER));
         table.startNewRow();
-        table.addCell(createCell("DISALLOWED UPGRADES: " + base.getDisallowed(), 2).setBorder(Border.NO_BORDER));
+        table.addCell(createCell(String.format("DISALLOWED UPGRADES: %s", base.getDisallowed()), 2).setBorder(Border.NO_BORDER));
         table.startNewRow();
-        table.addCell(createCell("BENEFITS: " + base.getOutput(), 2).setBorder(Border.NO_BORDER));
+        table.addCell(createCell(String.format("BENEFITS: %s", base.getOutput()), 2).setBorder(Border.NO_BORDER));
         return table;
     }
 
@@ -101,7 +105,7 @@ public class RosterBuilder {
         Table teamTable = new Table(3).setBorder(Border.NO_BORDER).useAllAvailableWidth();
         teamTable.addCell(createCell(String.format("TEAM NAME: %s", team.getName()), 1));
         teamTable.addCell(createCell(String.format("FACTION: %s", team.getFaction().getName()), 1));
-        teamTable.addCell(createCell("TEAM RATING: " + team.getRating(), 1));
+        teamTable.addCell(createCell(String.format("TEAM RATING: %s", team.getRating()), 1));
         teamTable.startNewRow();
         teamTable.addCell(createCell(String.format("FACTION BONUS: %s", team.getFaction().getOutput()), 3));
         teamTable.addCell(createCell(String.format("ADVANTAGE: %s", team.getAdvantage()), 3));
@@ -112,9 +116,13 @@ public class RosterBuilder {
 
     private Table addPersonTable(final Team team, Person person) {
         Table table = new Table(UnitValue.createPointArray(new float[]{100, 100, 100, 100, 100})).setBorder(Border.NO_BORDER).useAllAvailableWidth();
-        table.addCell(createCell("NAME: " + person.getName() + " (" + person.getExp() + " exp.)", 2));
-        table.addCell(createCell("DEFENSE: " + person.getDefense(), 2));
-        table.addCell(createCell("MAX HP: " + person.getMaxHP() + "   CURRENT: ", 2));
+        String name = String.format("NAME: %s (%s)xp", person.getName(), person.getExp());
+        if (name.contains("CMDR:")) {
+            name = name.replace("NAME: ", "");
+        }
+        table.addCell(createCell(name, 2));
+        table.addCell(createCell(String.format("DEFENSE: %s", person.getDefense()), 1));
+        table.addCell(createCell(String.format("MAX HP: %s   CURRENT: ", person.getMaxHP()), 3));
 
         table.startNewRow();
         table.addCell(addAcuity(person));
@@ -131,40 +139,45 @@ public class RosterBuilder {
             table.addCell(addAbilities(person));
         }
 
+        if (!person.getInjuries().isEmpty()) {
+            table.startNewRow();
+            table.addCell(addInjuries(person));
+        }
+
         return table;
     }
 
     private Cell addAcuity(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("ACUITY: " + person.getActualAcuity()));
+        cell.add(createCell(String.format("ACUITY: %s", person.getActualAcuity())));
         cell.add(createCell(person.getAcuityBonus()));
         return cell;
     }
 
     private Cell addCombat(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("COMBAT: " + person.getActualCombat()));
+        cell.add(createCell(String.format("COMBAT: %s", person.getActualCombat())));
         cell.add(createCell(person.getCombatBonus()));
         return cell;
     }
 
     private Cell addDexterity(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("DEXTERITY: " + person.getActualDexterity()));
+        cell.add(createCell(String.format("DEXTERITY: %s", person.getActualDexterity())));
         cell.add(createCell(person.getDexterityBonus()));
         return cell;
     }
 
     private Cell addFortitude(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("FORTITUDE: " + person.getActualFortitude()));
+        cell.add(createCell(String.format("FORTITUDE: %s", person.getActualFortitude())));
         cell.add(createCell(person.getFortitudeBonus()));
         return cell;
     }
 
     private Cell addPsionics(Person person) {
         Cell cell = new Cell();
-        cell.add(createCell("PSIONICS: " + person.getActualPsionics()));
+        cell.add(createCell(String.format("PSIONICS: %s", person.getActualPsionics())));
         cell.add(createCell(person.getPsionicsBonus()));
         return cell;
     }
@@ -197,6 +210,13 @@ public class RosterBuilder {
 
         }
 
+        return cell;
+    }
+
+    private Cell addInjuries(final Person person) {
+        Cell cell = new Cell(1, 5);
+        cell.add(new Paragraph("INJURIES: "));
+        person.getInjuries().forEach(injury -> cell.add(new Paragraph(String.format(" - %s", injury))));
         return cell;
     }
 

@@ -1,24 +1,25 @@
 name: "BAD"
-rating: 1
+rating: 2
 faction: Roughnecks
 base:
   baseType: Military_Command
   baseUpgrades:
     - Advanced_Cloning_Facility
+    - Weapons_Depot
 advantage: Psionic_Talent
-commander:
-  name: "Rico, Johnny"
-  exp: 0
-  acuity: 13
-  combat: 17
-  dexterity: 14
-  fortitude: 12
-  psionics: 0
-  weapons:
-    - Assault_Rifle
-  equipment:
-    - Advances_Body_Armor
 members:
+  - name: "CMDR: Rico, Johnny"
+    exp: 0
+    acuity: 13
+    combat: 17
+    dexterity: 14
+    fortitude: 12
+    psionics: 0
+    weapons:
+      - Assault_Rifle
+    equipment:
+      - Advances_Body_Armor
+
   - name: "'Dizzy' Flores (armless) "
     exp: 2
     acuity: 10
@@ -30,7 +31,10 @@ members:
 #      - Pistol
       - Restraining_Taser
     equipment:
-      - Shield
+#      - Shield
+    injuries:
+      - "Lost an arm"
+
   - name: "Carmen Ibanez"
     exp: 2
     acuity: 12

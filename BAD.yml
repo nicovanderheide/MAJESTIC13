@@ -1,31 +1,34 @@
 name: "BAD"
-rating: 1
+rating: 2
 faction: Industrial_Arms
 base:
   baseType: Military_Command
   baseUpgrades:
     - Weapons_Depot
+    - Alien_Reclamation_and_Research_Facility
 advantage: Psionic_Talent
-commander:
-  name: "Ben Packer (armless) "
-  exp: 2
-  acuity: 15
-  combat: 16
-  dexterity: 14
-  fortitude: 17
-  psionics: 0
-  weapons:
-#    - Pistol
-    - Restraining_Taser
-  equipment:
-    - Scanner
 members:
-  - name: "Shane Sanderson"
+  - name: "CMDR: Ben Packer "
+    exp: 2
+    acuity: 17
+    combat: 16
+    dexterity: 14
+    fortitude: 17
+    psionics: 0
+    weapons:
+      #    - Pistol
+      - Restraining_Taser
+    equipment:
+      - Scanner
+    injuries:
+      - "Lost an arm"
+
+  - name: "Shane (Brown) Sanderson"
     exp: 2
     acuity: 13
     combat: 15
     dexterity: 14
-    fortitude: 12
+    fortitude: 14
     psionics: 0
     weapons:
       - Assault_Rifle
@@ -33,7 +36,7 @@ members:
       - Sighting_HUD
   - name: "Moose Trengganun"
     exp: 0
-    acuity: 11
+    acuity: 13
     combat: 17
     dexterity: 13
     fortitude: 15
@@ -42,23 +45,25 @@ members:
       - Heavy_Repeating_Rifle
     equipment:
       - Sighting_HUD
+      - Targeting_Assist
   - name: "Colin Marcus"
     exp: 0
     acuity: 10
-    combat: 14
+    combat: 15
     dexterity: 14
-    fortitude: 13
+    fortitude: 14
     psionics: 0
     weapons:
       - Assault_Rifle
     equipment:
       - Sighting_HUD
+      - Targeting_Assist
   - name: "Casey Taylor"
     exp: 0
     acuity: 12
     combat: 14
     dexterity: 11
-    fortitude: 12
+    fortitude: 14
     psionics: 15
     weapons:
       - Sniper_Rifle

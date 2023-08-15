@@ -20,37 +20,44 @@ base:
     - Upgraded_Point_Defense_System
     - REtech_Engineering_Lab
     - Human_Resources
+  advancedResearchUpgrades:
+    - REtech_Weapons
+    - Psionic_Disruptions
+    - Cloning_Advancement
+    - Jump_Gear
+    - Ablative_Armor_Buffers
+    - Echolocation_Sensors
 # options (Advanced_Combat_Training, Armored_Team, Chemically_Enhanced, Connected, Environmental_Specialists, Extra_Gear, High_Alert_Team, Psionic_Talent, Rapid_Response_Team, Ready_to_Respond, Reinforced_Dermal_Layering, Roughest_and_Toughest, Tactical_Command_Team, Vertical_Response_Team, Veteran_Commander, Weapons_Specialists, Well_Armed)
 advantage: Psionic_Talent
-commander:
-  name: "Max"
-  exp: 99
-  acuity: 25
-  combat: 25
-  dexterity: 25
-  fortitude: 25
-  psionics: 25
-  weapons:
-    - Pistol
-    - Assault_Rifle
-    - Sniper_Rifle
-    - Heavy_Repeating_Rifle
-  equipment:
-    - Scanner
-    - Targeting_Assist
-    - Sighting_HUD
-    - Shield
-  abilities:
-    - Buffer
-    - Thrust
-    - Sight
-    - Healing
-    - Hold
-    - Spike
-    - Lift
-    - Invisibility
-    - Speed
+
 members:
+  - name: "Max"
+    exp: 99
+    acuity: 25
+    combat: 25
+    dexterity: 25
+    fortitude: 25
+    psionics: 25
+    weapons:
+      - Pistol
+      - Assault_Rifle
+      - Sniper_Rifle
+      - Heavy_Repeating_Rifle
+    equipment:
+      - Scanner
+      - Targeting_Assist
+      - Sighting_HUD
+      - Shield
+    abilities:
+      - Buffer
+      - Thrust
+      - Sight
+      - Healing
+      - Hold
+      - Spike
+      - Lift
+      - Invisibility
+      - Speed
   - name: "1"
     exp: 0
     acuity: 0

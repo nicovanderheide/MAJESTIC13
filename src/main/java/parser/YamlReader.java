@@ -22,7 +22,6 @@ public class YamlReader {
             while (team.getBase().getBaseUpgrades().size() < team.getBase().getBaseType().getMaxUpgrades()) {
                 team.getBase().getBaseUpgrades().add(BaseUpgrade.Empty);
             }
-            team.getCommander().setTeamFaction(faction);
             for (Member member : team.getMembers()) {
                 member.setTeamFaction(faction);
             }
@@ -32,7 +31,7 @@ public class YamlReader {
     }
 
     public static EnemyTables readEnemyTables()  throws IOException {
-        try (InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("enemyTables.yml")) {
+        try (InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("enemyTables.yaml")) {
             Yaml yaml = new Yaml(new Constructor(EnemyTables.class));
             EnemyTables enemyTables = yaml.load(inputStream);
             return enemyTables;
