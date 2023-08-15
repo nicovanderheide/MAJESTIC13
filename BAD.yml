@@ -4,10 +4,10 @@ faction: Industrial_Arms
 base:
   baseType: Military_Command
   baseUpgrades:
-    - Empty
+    - Weapons_Depot
 advantage: Psionic_Talent
 commander:
-  name: "Ben Packer"
+  name: "Ben Packer (armless) "
   exp: 2
   acuity: 15
   combat: 16
@@ -15,7 +15,8 @@ commander:
   fortitude: 17
   psionics: 0
   weapons:
-    - Sniper_Rifle
+#    - Pistol
+    - Restraining_Taser
   equipment:
     - Scanner
 members:
@@ -28,10 +29,12 @@ members:
     psionics: 0
     weapons:
       - Assault_Rifle
+    equipment:
+      - Sighting_HUD
   - name: "Moose Trengganun"
-    exp: 3
+    exp: 0
     acuity: 11
-    combat: 16
+    combat: 17
     dexterity: 13
     fortitude: 15
     psionics: 0
@@ -40,9 +43,9 @@ members:
     equipment:
       - Sighting_HUD
   - name: "Colin Marcus"
-    exp: 3
+    exp: 0
     acuity: 10
-    combat: 13
+    combat: 14
     dexterity: 14
     fortitude: 13
     psionics: 0
@@ -51,18 +54,19 @@ members:
     equipment:
       - Sighting_HUD
   - name: "Casey Taylor"
-    exp: 3
+    exp: 0
     acuity: 12
     combat: 14
     dexterity: 11
     fortitude: 12
-    psionics: 14
+    psionics: 15
     weapons:
-      - Pistol
+      - Sniper_Rifle
     equipment:
-      - Shield
+      - Targeting_Assist
     abilities:
       - Thrust
       - Healing
       - Invisibility
       - Spike
+  # - Shield

@@ -4,13 +4,13 @@ faction: Roughnecks
 base:
   baseType: Military_Command
   baseUpgrades:
-    - Empty
+    - Advanced_Cloning_Facility
 advantage: Psionic_Talent
 commander:
   name: "Rico, Johnny"
   exp: 0
   acuity: 13
-  combat: 16
+  combat: 17
   dexterity: 14
   fortitude: 12
   psionics: 0
@@ -19,19 +19,20 @@ commander:
   equipment:
     - Advances_Body_Armor
 members:
-  - name: "'Dizzy' Flores"
-    exp: 0
+  - name: "'Dizzy' Flores (armless) "
+    exp: 2
     acuity: 10
     combat: 13
     dexterity: 13
     fortitude: 15
     psionics: 0
     weapons:
-      - Pistol
+#      - Pistol
+      - Restraining_Taser
     equipment:
       - Shield
   - name: "Carmen Ibanez"
-    exp: 0
+    exp: 2
     acuity: 12
     combat: 10
     dexterity: 10
@@ -42,7 +43,7 @@ members:
     equipment:
       - Medical_Kit
   - name: "Carl Jenkins"
-    exp: 0
+    exp: 2
     acuity: 7
     combat: 15
     dexterity: 12
@@ -55,7 +56,7 @@ members:
       - Spike
       - Healing
       - Thrust
-  - name: "Ace Levy"
+  - name: "Ace Levy #2"
     exp: 0
     acuity: 15
     combat: 17
@@ -66,3 +67,4 @@ members:
       - Heavy_Repeating_Rifle
     equipment:
       - Targeting_Assist
+      - Sighting_HUD

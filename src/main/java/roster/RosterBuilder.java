@@ -19,7 +19,7 @@ import data.enums.BaseType;
 import data.enums.BaseUpgrade;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import parser.CrewReader;
+import parser.YamlReader;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -33,7 +33,7 @@ public class RosterBuilder {
         try (final PdfDocument pdf = new PdfDocument(new PdfWriter(outputFile));
              final Document document = new Document(pdf, PageSize.A4).setFont(PdfFontFactory.createFont("Courier")).setFontSize(8)
         ) {
-            Team team = CrewReader.read(crewFile);
+            Team team = YamlReader.read(crewFile);
             log.info("TEAM: {}", team);
 
             addTeamPage(document, team);

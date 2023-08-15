@@ -1,0 +1,92 @@
+tables:
+  - min: 1
+    max: 4
+    outcome:
+      - Avenkian_Shrieking_Shock_Trooper
+      - Rakire_Winged_Hunter
+      - Jel_Brute
+      - Aglandian_Horror
+      - Centarian_Mauler
+      - Talmak_Spawn
+  - min: 5
+    max: 8
+    outcome:
+      - Deranger
+      - Terraformer
+      - Warping_Crawler
+      - Zelak
+      - Helion_Beam_Chaser
+      - Reroll
+  - min: 9
+    max: 12
+    outcome:
+      - Tarskyth
+      - Ichor_Spitter
+      - Spine_Flinger
+      - Navite_Warrior
+      - Pulsar
+      - Reroll
+  - min: 13
+    max: 16
+    outcome:
+      - Yvenian_Shocker
+      - Cannonade
+      - Mind_Raker
+      - Chaos_Bringer
+      - Gzurn_Shadow
+      - Reroll
+  - min: 13
+    max: 16
+    outcome:
+      - Razorlash
+      - Renvultia_Stalker
+      - Ocular_Enigma
+      - Poisoned_Lasher
+      - Benzith_Night_Bringer
+      - Reroll
+enemies:
+  - name: Tarskyth
+    type: Ravager
+    flight: True
+    description: "The Tarskyth are natural hunters, with the ability to immobilize and weaken their prey from range, making them much easier to finish off at their convenience. The Tarskyth will utilize its aerial superiority where possible, often attacking from high vantage points"
+    health: 115
+    defense: 20
+    rage: 30
+    acuity: 26
+    combat: 20
+    dexterity: 24
+    fortitude: 18
+    psionics: 0
+    abilities:
+      - name: "Sharp Vision"
+        description: "Whenever the Tarskyth makes an Acuity check to spot a Hidden enemy, it may roll twice and select the best result."
+    actions:
+      - name: "[Basic] Penetrating Pinions"
+        description: "The Tarskyth makes three attacks with its Penetrating Pinions (Ranged, Combat, 1D6+3 damage). If this attack hits, the target must succeed on a Fortitude stat check 22 [26] or be Poisoned and Stunned."
+      - name: "Explosion of Spines"
+        description: "If the Tarskyth did not utilize Explosion of Spines during its last activation, and if it starts its activation with at least two enemies within 18”, it will use Explosion of Spines. All enemies within 18ich must succeed on a Fortitude stat check 17 [21] or be Poisoned."
+      - name: "Restraining Spines"
+        description: "If the Tarskyth begins its activation within 18 inch of at least two enemies, and it used Explosion of Spines during its last activation, it will use Restraining Spines. The two closest enemies must succeed on a Dexterity stat check 20 [24] or be Restrained"
+
+  - name: Aglandian_Horror
+    type: Monstrosity
+    flight: False
+    description: Aglandian Horrors appear as little more than mounds of flesh and limbs at first glance, but when approached, the true terror of this creature is quickly revealed. It is covered in claws, mouths, and strange appendages it uses for vision. These aliens are incredibly varied – some have additional elements mixed into their undulating form – but they are all horrible.
+    health: 135
+    defense: 20
+    rage: 35
+    acuity: 25
+    combat: 21
+    dexterity: 21
+    fortitude: 23
+    psionics: 0
+    abilities:
+      - name: "Wave of Flesh"
+        description: "The Aglandian Horror is immune to the Restrained and Blinded conditions. In addition, the Aglandian Horror can never have its move reduced for any reason or by any means."
+    actions:
+      - name: "[ Basic ] Grabbing Limbs"
+        description: "The Aglandian Horror makes two attacks with its Grabbing Limbs (Melee, Combat, 1D6+4 damage). Each attack targets a different team member if possible. Any target hit must succeed on a Dexterity stat check 23 [27] or be Restrained."
+      - name: "Chewing Frenzy"
+        description: "If the Aglandian Horror has an enemy Restrained within melee range, it will use Chewing Frenzy during its activation. The target must succeed on a Fortitude stat check 24 [ 28 ] or suffer 4D6 damage and be Stunned."
+      - name: "Consume All"
+        description: "If the Aglandian Horror used Chewing Frenzy during its last activation and there is an enemy Stunned within melee range, it will use Consume All during its activation. The Stunned target must succeed on a Fortitude stat check 25 [29] or suffer 8D6 damage, and the Aglandian Horror heals 4d6 damage."
