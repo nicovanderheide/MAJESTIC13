@@ -15,9 +15,7 @@ import static java.nio.file.Files.walk;
 public class MissionGenerator {
     public static void main(String[] args) throws IOException {
         log.info("Mission generator");
-
         EnemyTables enemyTables = YamlReader.readEnemyTables();
-        EnemiesBuilder builder = new EnemiesBuilder();
-        enemyTables.getEnemies().forEach(enemy-> builder.create(enemy));
+        enemyTables.getEnemies().forEach(EnemiesBuilder::create);
     }
 }
