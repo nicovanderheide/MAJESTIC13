@@ -45,28 +45,55 @@ tables:
       - Benzith_Night_Bringer
       - Reroll
 enemies:
-  - name: Tarskyth
-    type: Ravager
-    flight: True
-    description: "The Tarskyth are natural hunters, with the ability to immobilize and weaken their prey from range, making them much easier to finish off at their convenience. The Tarskyth will utilize its aerial superiority where possible, often attacking from high vantage points"
-    health: 115
-    defense: 20
+  # Monstrosities
+  - name: Avenkian_Shrieking_Shock_Trooper
+    type: Monstrosity
+    flight: False
+    description: "The Avenkian aliens are known for being particularly brutal. These creatures are capable of exploding organs with their cries alone."
+    health: 120
+    defense: 24
     rage: 30
-    acuity: 26
-    combat: 20
-    dexterity: 24
+    acuity: 21
+    combat: 23
+    dexterity: 25
     fortitude: 18
     psionics: 0
     abilities:
-      - name: "Sharp Vision"
-        description: "Whenever the Tarskyth makes an Acuity check to spot a Hidden enemy, it may roll twice and select the best result."
+      - name: "Sonic Murmurs"
+        description: "Any time the Avenkian Shrieking Shock Trooper suffers damage from a weapon attack, all enemies within 12” must succeed on a Fortitude stat check 20 [24] or suffer 2D6 damage and become Stunned."
+      - name: "Psionic Disruption"
+        description: "The Avenkian Shrieking Shock Trooper emits a constant sound that disrupts the mind of Psionics. Anytime a team member attempts to use a Psionic power of any kind, they must succeed on a Fortitude stat check 18 [22] or the power fails and the action is wasted."
     actions:
-      - name: "[Basic] Penetrating Pinions"
-        description: "The Tarskyth makes three attacks with its Penetrating Pinions (Ranged, Combat, 1D6+3 damage). If this attack hits, the target must succeed on a Fortitude stat check 22 [26] or be Poisoned and Stunned."
-      - name: "Explosion of Spines"
-        description: "If the Tarskyth did not utilize Explosion of Spines during its last activation, and if it starts its activation with at least two enemies within 18”, it will use Explosion of Spines. All enemies within 18ich must succeed on a Fortitude stat check 17 [21] or be Poisoned."
-      - name: "Restraining Spines"
-        description: "If the Tarskyth begins its activation within 18 inch of at least two enemies, and it used Explosion of Spines during its last activation, it will use Restraining Spines. The two closest enemies must succeed on a Dexterity stat check 20 [24] or be Restrained"
+      - name: "[Basic] Ripping Claws"
+        description: "The Avenkian Shrieking Shock Trooper makes two attacks with its Ripping Claws (Melee, Combat, 2D6+3 damage). If this attack hits, the target must succeed on a Dexterity stat check 20 [24] or be Restrained."
+      - name: "Keening Shriek"
+        description: "If the Avenkian Shrieking Shock Trooper did not use Keening Shriek during its last activation, and there are at least two enemies within 12” of the Avenkian Shrieking Shock Trooper, it will use Keening Shriek. All team members within 12” of Avenkian Shrieking Shock Trooper must succeed on a Fortitude stat check 21 [25] or suffer 2D6 damage and be Stunned."
+
+  - name: Rakire_Winged_Hunter
+    type: Monstrosity
+    flight: True
+    description: "Rakire Winged Hunters are not as large as most alien Monstrosities but that appearance can be deceiving. They have collapsible wings capable of acrobatic displays of flight and maneuverability. They prefer to toy with their prey before eventually closing in for the kill."
+    health: 120
+    rage: 30
+    defense: 23
+    acuity: 25
+    combat: 18
+    dexterity: 25
+    fortitude: 16
+    psionics: 0
+    abilities:
+      - name: "Flyby Attack"
+        description: "The Rakire Winged Hunter may take their action in the middle of their move and resume that movement afterward (splitting their movement distance before and after an attack or any other action). The Rakire Winged Hunter will follow the Enemy AI for Monstrosities, except it will always attempt to keep moving after making an attack, and move to the highest vertical point on the game board within its remaining movement distance"
+      - name: "Hard to Restrain"
+        description: "Whenever a Rakire Winged Hunter is subject to a condition as a result of a Dexterity stat check, they may roll that stat check twice and select the higher result. In addition, at the start of their activation, the Rakire Winged Hunter automatically clears one Dexterity condition without any check necessary (they may make an additional check to clear a condition as normal)."
+    actions:
+      - name: "[Basic] Claw Swipes"
+        description: "The Rakire Winged Hunter makes two attacks with its Claw Swipes (Melee, Combat, 2D6+1 damage). If this attack hits, the target must succeed on a Fortitude stat check 21 [25] or be Poisoned."
+      - name: "Grab and Drop"
+        description: "If the Rakire Winged Hunter used Claw Swipes in its last activation, and it starts this activation within 6” of an enemy, it will now use Grab and Drop (Melee, Combat, 1D6 damage). The Rakire Winged Hunter will move adjacent to the enemy and make a single attack. The target must succeed on a Dexterity stat check 24 [28] or be pulled into the air. The Rakire Winged Hunter will then drop the target, which suffers damage as per a fall from 12’’. Finally, the Rakire Winged Hunter will land adjacent to the dropped target. If the Rakire Winged Hunter’s target succeeds on their Dexterity stat check (see Falling, page 22), the Rakire Winged Hunter moves to the highest vertical point with its remaining movement (if there is no higher elevation within the range of their remaining movement, it will move directly away from the target and all other enemies, as possible)."
+
+  - name: Jel_Brute
+    type: Monstrosity
 
   - name: Aglandian_Horror
     type: Monstrosity
@@ -90,3 +117,122 @@ enemies:
         description: "If the Aglandian Horror has an enemy Restrained within melee range, it will use Chewing Frenzy during its activation. The target must succeed on a Fortitude stat check 24 [ 28 ] or suffer 4D6 damage and be Stunned."
       - name: "Consume All"
         description: "If the Aglandian Horror used Chewing Frenzy during its last activation and there is an enemy Stunned within melee range, it will use Consume All during its activation. The Stunned target must succeed on a Fortitude stat check 25 [29] or suffer 8D6 damage, and the Aglandian Horror heals 4d6 damage."
+
+  - name: Centarian_Mauler
+    type: Monstrosity
+
+  - name: Talmak_Spawn
+    type: Monstrosity
+  - name: Deranger
+    type: Monstrosity
+  - name: Terraformer
+    type: Monstrosity
+  - name: Warping_Crawler
+    type: Monstrosity
+  - name: Zelak
+    type: Monstrosity
+
+  # Ravagers
+  - name: Helion_Beam_Chaser
+    type: Ravager
+
+  - name: Tarskyth
+    type: Ravager
+    flight: True
+    description: "The Tarskyth are natural hunters, with the ability to immobilize and weaken their prey from range, making them much easier to finish off at their convenience. The Tarskyth will utilize its aerial superiority where possible, often attacking from high vantage points"
+    health: 115
+    defense: 20
+    rage: 30
+    acuity: 26
+    combat: 20
+    dexterity: 24
+    fortitude: 18
+    psionics: 0
+    abilities:
+      - name: "Sharp Vision"
+        description: "Whenever the Tarskyth makes an Acuity check to spot a Hidden enemy, it may roll twice and select the best result."
+    actions:
+      - name: "[Basic] Penetrating Pinions"
+        description: "The Tarskyth makes three attacks with its Penetrating Pinions (Ranged, Combat, 1D6+3 damage). If this attack hits, the target must succeed on a Fortitude stat check 22 [26] or be Poisoned and Stunned."
+      - name: "Explosion of Spines"
+        description: "If the Tarskyth did not utilize Explosion of Spines during its last activation, and if it starts its activation with at least two enemies within 18”, it will use Explosion of Spines. All enemies within 18ich must succeed on a Fortitude stat check 17 [21] or be Poisoned."
+      - name: "Restraining Spines"
+        description: "If the Tarskyth begins its activation within 18 inch of at least two enemies, and it used Explosion of Spines during its last activation, it will use Restraining Spines. The two closest enemies must succeed on a Dexterity stat check 20 [24] or be Restrained"
+
+  - name: Ichor_Spitter
+    type: Ravager
+  - name: Spine_Flinger
+    type: Ravager
+  - name: Navite_Warrior
+    type: Ravager
+  - name: Pulsar
+    type: Ravager
+    flight: False
+    description: "The Pulsar are an alien race that FORCE uses to cause panic and confusion amongst their enemies. This alien creates Psionic waves that disorient anyone in proximity – sowing chaos, confusion, and madness."
+    health: 110
+    rage: 30
+    defense: 21
+    acuity: 20
+    combat: 18
+    dexterity: 23
+    fortitude: 20
+    psionics: 25
+    abilities:
+      - name: "Mental Defenses"
+        description: "Whenever an enemy utilizes any ability with the Psionic keyword while within 12” of the Pulsar, they suffer 1D6 damage. In addition, whenever the Pulsar makes a stat check to avoid or clear a condition caused by an attack with the Psionic keyword, the Pulsar rolls the stat check twice and selects the highest result."
+      - name: "Derangement:"
+        description: "If an enemy activates within 12” of the Pulsar and is under the effect of any condition, they move randomly. Determine a random direction and move the enemy their full movement distance in a straight line in that direction. If this would carry the model into Dangerous terrain, or cause it to fall, roll for those effects as normal."
+    actions:
+      - name: "[Basic] Pulse Wave"
+        description: "All enemies within 12” of the Pulsar must succeed on a Fortitude stat check 18 [22] or suffer 1D6 damage and be Stunned. This attack has the Psionic keyword."
+      - name: "Focusing Wave"
+        description: "If the Pulsar activates within 12” of an enemy that is Stunned, it will use Focusing Wave. It will make a single attack against the closest Stunned enemy. If two enemies are equidistant, randomly determine the target (Ranged, Psionic, 4D6+2 damage). If this attack scores a critical hit, the target must succeed on a Fortitude stat check 25 [29] or be immediately put Out of Action."
+      - name: "Chaos Suggestion"
+        description: "If the Pulsar used Focusing Wave on its last activation and there is an enemy that is Stunned within 12” when it activates, it will use Chaos Suggestion. All enemies within 12” of the Pulsar that are Stunned must succeed on a Fortitude stat check 20 [24]. Otherwise, the next time that enemy activates, if they do not clear the Stunned condition, they must use their attack action and determine their target randomly from all targets they can see, whether friend or foe."
+
+  - name: Yvenian_Shocker
+    type: Ravager
+  - name: Cannonade
+    type: Ravager
+    flight: False
+    description: "The Cannonade is a simple but extremely dangerous alien. There is no cunning or cleverness in this creature. It is a being of pure destruction, unleashed to level enemies and their infrastructure alike."
+    health: 135
+    rage: 35
+    defense: 21
+    acuity: 22
+    combat: 20
+    dexterity: 17
+    fortitude: 23
+    psionics: 0
+    abilities:
+      - name: "Explosive Engine"
+        description: "Whenever the Cannonade suffers damage from a Weapon attack, all enemies within 12” of the Cannonade suffer 1D6 damage."
+    actions:
+      - name: "[Basic] Blast"
+        description: "The Cannonade makes a single attack with its Blast (Ranged, Combat, Energy, 4D6+3 damage). If this attack hits, the target must succeed on a Fortitude stat check 20 [24] or be Stunned. In addition, if the attack hits, all enemies within 6” of the target must succeed on a Dexterity stat check 20 [24] or suffer 2D6+1 damage."
+      - name: "Leveling Blast"
+        description: "If the Cannonade activates within 12” of at least two enemies and did not utilize Leveling Blast during its last activation, it will now use Leveling Blast. All enemies within 12” of the Cannonade must succeed on a Dexterity stat check 20 [24] or suffer 1D6+6 damage and be Blinded."
+      - name: "Disrupting Blast"
+        description: "If the Cannonade activates and there is only one enemy within 12” and it did not utilize Disrupting Blast during its last activation, it will now utilize Disrupting Blast. The Cannonade will make a single attack with Disrupting Blast against the enemy within 12” (Ranged, Combat, Energy, +20, 3D6+5 damage). If this attack hits, the target must succeed on a Fortitude stat check 22 [26] or be Stunned."
+      - name: "Final Detonation"
+        description: "If the Cannonade is In Extremis, it will utilize Final Detonation. All enemies within 24” of the Cannonade must succeed on a Dexterity stat check 20 [24] or suffer 5D6+3 damage. Once this attack is resolved, the Cannonade is Out of Action and Removed from Play."
+
+  - name: Mind_Raker
+    type: Ravager
+  # Stalkers
+  - name: Chaos_Bringer
+    type: Stalker
+  - name: Gzurn_Shadow
+    type: Stalker
+  - name: Razorlash
+    type: Stalker
+  - name: Renvultia_Stalker
+    type: Stalker
+  - name: Ocular_Enigma
+    type: Stalker
+  - name: Poisoned_Lasher
+    type: Stalker
+  - name: Benzith_Night_Bringer
+    type: Stalker
+
+
