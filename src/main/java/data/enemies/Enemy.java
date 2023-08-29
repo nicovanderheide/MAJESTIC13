@@ -22,4 +22,7 @@ public class Enemy {
 
     private Set<Ability> abilities = new HashSet<>();
     private Set<Action> actions = new HashSet<>();
+    public String getName() {
+        return name.replaceAll("_", " ");
+    }
 }
