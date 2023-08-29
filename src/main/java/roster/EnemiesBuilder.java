@@ -24,7 +24,9 @@ import data.enums.BaseUpgrade;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import parser.YamlReader;
+import roster.decorators.EnemyDecorator;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -32,102 +34,24 @@ import static data.enemies.Type.Monstrosity;
 
 @Slf4j
 public class EnemiesBuilder {
-    public void create(Enemy enemy) {
-
-        String outputFile = enemy.getName().concat(".pdf");
-        log.info("Generating: {}", outputFile);
-        try (final PdfDocument pdf = new PdfDocument(new PdfWriter(outputFile));
-             final Document document = new Document(pdf, PageSize.A4).setFont(PdfFontFactory.createFont("Courier")).setFontSize(8)
-        ) {
-            document.add(addEnemy(enemy));
-            document.add(spacer(1));
-            document.add(addEnemyType(enemy.getType()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public static void create(final Enemy enemy) {
+        if (!enemy.getActions().isEmpty()) {
+            String outputFile = enemy.getName().concat(".pdf");
+            log.info("Generating: {}", outputFile);
+            try (final PdfDocument pdf = new PdfDocument(new PdfWriter(new File("enemies", outputFile)));
+                 final Document document = new Document(pdf, PageSize.A4).setFont(PdfFontFactory.createFont("Courier")).setFontSize(8)
+            ) {
+                document.add(EnemyDecorator.addEnemy(enemy));
+                document.add(EnemyDecorator.spacer(1));
+                document.add(addEnemyType(enemy.getType()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private Table addEnemy(final Enemy enemy) {
-        Table table = new Table(UnitValue.createPointArray(new float[]{100, 100, 100, 100, 100})).setBorder(Border.NO_BORDER).useAllAvailableWidth();
-        table.addCell(createCell("NAME: " + enemy.getName()));
-        table.addCell(createCell("TYPE: " + enemy.getType()));
-        table.addCell(createCell("DEFENSE: " + enemy.getDefense()));
-        table.addCell(createCell("MAX HP: " + enemy.getHealth() + "   RAGE: " + enemy.getRage(), 3));
 
-        table.startNewRow();
-        table.addCell(addActivations(enemy.getAcuity()));
-        table.addCell(addStat("COM", enemy.getCombat()));
-        table.addCell(addStat("DEX", enemy.getDexterity()));
-        table.addCell(addStat("FOR", enemy.getFortitude()));
-        table.addCell(addStat("PSI", enemy.getPsionics()));
-
-        table.addCell(spacer(5));
-        table.addCell(addAbilities(enemy));
-        table.addCell(spacer(5));
-        table.addCell(addActions(enemy));
-
-        return table;
-    }
-    private Cell addActivations(final int number) {
-        Cell cell = new Cell();
-        cell.add(createCell(String.format("ACU: %s | %s", number, number-10)));
-        return cell;
-    }
-
-    private Cell addStat(final String stat, final int number) {
-        Cell cell = new Cell();
-        cell.add(createCell(stat + ": " + number));
-        return cell;
-    }
-
-    private Cell addAbilities(final Enemy enemy) {
-        Cell cell = new Cell(1, 5);
-        cell.add(new Paragraph("ABILITIES: ").setBold());
-        cell.add(spacer(1));
-        for (Ability ability : enemy.getAbilities()) {
-            cell.add(new Paragraph(ability.getName().concat(":")).setBold());
-            cell.add(new Paragraph(ability.getDescription()));
-            cell.add(spacer(1));
-        }
-        return cell;
-    }
-
-    private Cell addActions(final Enemy enemy) {
-        Cell cell = new Cell(1, 5);
-        cell.add(new Paragraph("ACTIONS: ").setBold());
-        cell.add(spacer(1));
-        for (Action action : enemy.getActions()) {
-            cell.add(new Paragraph(action.getName().concat(":")).setBold());
-            cell.add(new Paragraph(action.getDescription()));
-            cell.add(spacer(1));
-        }
-        return cell;
-    }
-
-    private Cell createCell(final String text, final int columns) {
-        Cell cell = new Cell(1, columns);
-        cell.add(new Paragraph(text));
-        return cell;
-
-    }
-
-    private Cell createCell(final String text) {
-        return createCell(text, 1);
-    }
-
-
-    private Cell spacer(int rows, int cols) {
-        Cell cell = new Cell(rows, cols);
-        cell.setBorder(Border.NO_BORDER);
-        cell.add(new Div().setHeight(5));
-        return cell;
-    }
-
-    private Cell spacer(int cols) {
-        return spacer(1, cols);
-    }
-
-    private Cell addEnemyType(Type type) {
+    private static Cell addEnemyType(Type type) {
         Cell cell = new Cell();
         cell.add(new Paragraph(type.name()).setBold());
         Table table = new Table(2);
