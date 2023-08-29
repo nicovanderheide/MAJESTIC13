@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum BaseUpgrade {
-    Empty(""),
+    Empty("Space"),
     Advanced_Cloning_Facility("When making the 2D6 roll for the outcome of the cloning process (see page 105), you may add or subtract 2 from the final result. If you may reroll on this table for any reason, you must choose a result from the reroll before applying this modifier."),
     Weapons_Depot("All team members gain a +1 bonus to damage with weapon attacks."),
     Combat_Training_Facility("The experience cost to increase the Combat stat of any team member is reduced by 1 (see Advancement, page 106)."),
@@ -25,6 +25,6 @@ public enum BaseUpgrade {
     private final String benefits;
 
     public String getName() {
-        return this.equals(Empty) ? "" : name().replaceAll("_", " ");
+        return name().replaceAll("_", " ");
     }
 }
