@@ -11,7 +11,7 @@ public enum Gear {
     Sighting_HUD("ignore cover"),
     Shield("defense +1"),
     Advances_Body_Armor("-1 dmg"),
-    Medical_Kit("heal 1D6+4 1\""),
+    Medical_Kit("heal 1D6+4 1”"),
 
     ;
 

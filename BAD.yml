@@ -1,17 +1,26 @@
-name: "BAD"
-rating: 2
+name: "B.A.D."
+rating: 4
 faction: Industrial_Arms
 base:
   baseType: Military_Command
   baseUpgrades:
     - Weapons_Depot
     - Alien_Reclamation_and_Research_Facility
+    - Advanced_Research_Station
+    - REtech_Engineering_Lab
+  advancedResearchUpgrades:
+#    - REtech_Weapons
+#    - Psionic_Disruptions
+#    - Cloning_Advancement
+#    - Jump_Gear
+#    - Ablative_Armor_Buffers
+#    - Echolocation_Sensors
 advantage: Psionic_Talent
 members:
   - name: "CMDR: Ben Packer "
-    exp: 2
+    exp: 4
     acuity: 17
-    combat: 16
+    combat: 18
     dexterity: 14
     fortitude: 17
     psionics: 0
@@ -20,13 +29,14 @@ members:
       - Restraining_Taser
     equipment:
       - Scanner
+      - Sighting_HUD
     injuries:
       - "Lost an arm"
 
-  - name: "Shane (Brown) Sanderson"
+  - name: "Shane (Brown) Sanderson #2"
     exp: 2
     acuity: 13
-    combat: 15
+    combat: 18
     dexterity: 14
     fortitude: 14
     psionics: 0
@@ -35,9 +45,9 @@ members:
     equipment:
       - Sighting_HUD
   - name: "Moose Trengganun"
-    exp: 0
-    acuity: 13
-    combat: 17
+    exp: 2
+    acuity: 14
+    combat: 18
     dexterity: 13
     fortitude: 15
     psionics: 0
@@ -46,10 +56,11 @@ members:
     equipment:
       - Sighting_HUD
       - Targeting_Assist
+
   - name: "Colin Marcus"
-    exp: 0
+    exp: 2
     acuity: 10
-    combat: 15
+    combat: 17
     dexterity: 14
     fortitude: 14
     psionics: 0
@@ -59,9 +70,9 @@ members:
       - Sighting_HUD
       - Targeting_Assist
   - name: "Casey Taylor"
-    exp: 0
+    exp: 2
     acuity: 12
-    combat: 14
+    combat: 17
     dexterity: 11
     fortitude: 14
     psionics: 15

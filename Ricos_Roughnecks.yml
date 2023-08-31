@@ -6,26 +6,55 @@ base:
   baseUpgrades:
     - Advanced_Cloning_Facility
     - Weapons_Depot
+    - Combat_Training_Facility
+    - Alien_Reclamation_and_Research_Facility
 advantage: Psionic_Talent
 members:
-  - name: "CMDR: Rico, Johnny"
+  - name: "Ace Levy #2"
     exp: 0
-    acuity: 13
-    combat: 18
+    acuity: 16
+    combat: 20
+    dexterity: 15
+    fortitude: 13
+    psionics: 0
+    weapons:
+      - Heavy_Repeating_Rifle
+    equipment:
+      - Targeting_Assist
+      - Sighting_HUD
+
+  - name: "CMDR: Rico, Johnny"
+    exp: 1
+    acuity: 14
+    combat: 20
     dexterity: 14
     fortitude: 13
     psionics: 0
     weapons:
+      - Heavy_Repeating_Rifle
       - Assault_Rifle
     equipment:
       - Advances_Body_Armor
+      - Targeting_Assist
+
+  - name: "Carmen Ibanez"
+    exp: 2
+    acuity: 12
+    combat: 15
+    dexterity: 10
+    fortitude: 13
+    psionics: 0
+    weapons:
+      - Sniper_Rifle
+    equipment:
+      - Medical_Kit
 
   - name: "'Dizzy' Flores (armless) "
-    exp: 2
+    exp: 1
     acuity: 11
-    combat: 14
-    dexterity: 13
-    fortitude: 15
+    combat: 18
+    dexterity: 10
+    fortitude: 13
     psionics: 0
     weapons:
 #      - Pistol
@@ -35,25 +64,13 @@ members:
     injuries:
       - "Lost an arm"
 
-  - name: "Carmen Ibanez"
-    exp: 2
-    acuity: 12
-    combat: 12
-    dexterity: 10
-    fortitude: 13
-    psionics: 0
-    weapons:
-      - Sniper_Rifle
-    equipment:
-      - Medical_Kit
-
   - name: "Carl Jenkins"
     exp: 2
     acuity: 7
-    combat: 15
+    combat: 16
     dexterity: 12
     fortitude: 10
-    psionics: 14
+    psionics: 16
     weapons:
       - Flash_Bang_Grenade
     equipment:
@@ -61,16 +78,4 @@ members:
       - Spike
       - Healing
       - Thrust
-
-  - name: "Ace Levy #2"
-    exp: 0
-    acuity: 15
-    combat: 19
-    dexterity: 15
-    fortitude: 12
-    psionics: 0
-    weapons:
-      - Heavy_Repeating_Rifle
-    equipment:
-      - Targeting_Assist
-      - Sighting_HUD
+      - Invisibility

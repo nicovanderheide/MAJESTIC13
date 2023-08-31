@@ -34,7 +34,9 @@ public class BaseDecorator extends Decorator {
         Table table = new Table(1).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth().setKeepTogether(true);
         table.addCell(createCell(upgrade.getName()).setBold().setBorder(Border.NO_BORDER).setBorderBottom(new SolidBorder(0.5f)));
         table.addCell(createCell(upgrade.getBenefits()).setBorder(Border.NO_BORDER));
-        if (upgrade.equals(BaseUpgrade.Advanced_Research_Station)) {
+        if (upgrade.equals(BaseUpgrade.Advanced_Research_Station)
+        && null != base.getAdvancedResearchUpgrades()
+        ) {
             table.addCell(createCell("UNLOCKED UPGRADES:").setBold().setBorder(Border.NO_BORDER));
             base.getAdvancedResearchUpgrades().forEach(advancedResearchUpgrade -> {
                 table.addCell(createCell(advancedResearchUpgrade.getName()).setBold().setBorder(Border.NO_BORDER));

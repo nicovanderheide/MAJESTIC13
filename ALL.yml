@@ -43,6 +43,10 @@ members:
       - Assault_Rifle
       - Sniper_Rifle
       - Heavy_Repeating_Rifle
+      - REtech_Pistol
+      - REtech_Assault_Rifle
+      - REtech_Gauss_Rifle
+      - REtech_High_Energy_Rifle
     equipment:
       - Scanner
       - Targeting_Assist
