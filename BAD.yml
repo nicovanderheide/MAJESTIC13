@@ -9,7 +9,7 @@ base:
     - Advanced_Research_Station
     - REtech_Engineering_Lab
   advancedResearchUpgrades:
-#    - REtech_Weapons
+    - REtech_Weapons
 #    - Psionic_Disruptions
 #    - Cloning_Advancement
 #    - Jump_Gear
