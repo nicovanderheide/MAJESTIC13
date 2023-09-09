@@ -1,39 +1,46 @@
 package roster;
 
-import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.borders.SolidBorder;
-import com.itextpdf.layout.element.*;
-import com.itextpdf.layout.properties.UnitValue;
-import data.Base;
-import data.Member;
-import data.Person;
-import data.Team;
-import data.enemies.Ability;
-import data.enemies.Action;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import data.enemies.Enemy;
+import data.enemies.EnemyTables;
 import data.enemies.Type;
-import data.enums.Abilities;
-import data.enums.BaseType;
-import data.enums.BaseUpgrade;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import parser.YamlReader;
 import roster.decorators.EnemyDecorator;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-
-import static data.enemies.Type.Monstrosity;
+import java.util.Iterator;
 
 @Slf4j
 public class EnemiesBuilder {
+
+    public static void createMass(EnemyTables enemyTables) {
+        try (final PdfDocument pdf = new PdfDocument(new PdfWriter(new File("enemies", "_ALL_Phase_1.pdf")));
+             final Document document = new Document(pdf, PageSize.A4).setFont(PdfFontFactory.createFont("Courier")).setFontSize(8)
+        ) {
+            Iterator<Enemy> iterator = enemyTables.getEnemies().iterator();
+            do {
+                Enemy enemy = iterator.next();
+                document.add(EnemyDecorator.addEnemy(enemy));
+                document.add(EnemyDecorator.spacer(1));
+                document.add(addEnemyType(enemy.getType()));
+                if (iterator.hasNext()) {
+                    document.add(new AreaBreak());
+                }
+            } while (iterator.hasNext());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void create(final Enemy enemy) {
         if (!enemy.getActions().isEmpty()) {
             String outputFile = enemy.getName().concat(".pdf");
@@ -54,7 +61,7 @@ public class EnemiesBuilder {
     private static Cell addEnemyType(Type type) {
         Cell cell = new Cell();
         cell.add(new Paragraph(type.name()).setBold());
-        Table table = new Table(2);
+        Table table = new Table(2).setFontSize(7);
         switch (type) {
             case Monstrosity:
                 cell.add(new Paragraph("A Monstrosity first activates according to its Acuity. A Monstrosity " +

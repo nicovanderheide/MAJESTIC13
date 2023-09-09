@@ -94,6 +94,28 @@ enemies:
 
   - name: Jel_Brute
     type: Monstrosity
+    flight: False
+    description: "Jel Brutes are massive, hulking creatures, capable of pushing aside trees and crushing a human like wadding up a piece of paper. Their powerful build makes them almost impossible to stop or slow down; when going full speed, even reinforced steel bulkheads are smashed aside with ease. Fortunately, they are slow creatures, with little cunning to their attacks."
+    health: 145
+    rage: 40
+    defense: 21
+    acuity: 17
+    combat: 23
+    dexterity: 18
+    fortitude: 24
+    psionics: 0
+    abilities:
+      - name: "Brute Toughness"
+        description: "The Jel Brute reduces all damage it suffers from weapons by 3. In addition, the Jel Brute automatically clears all Fortitude conditions when it activates."
+      - name: "Weak Mind"
+        description: "The Jel Brute suffers a -4 penalty to all stat checks made to resist any condition with the Psionic keyword. In addition, if the Jel Brute suffers damage from a source with the Psionic keyword, that damage is increased by 3."
+    actions:
+      - name: "[Basic] Crushing Fists"
+        description: "The Jel Brute makes two attacks with its Crushing Fists (Melee, Combat, 3D6 damage). If this attack hits, the target must succeed on a Fortitude stat check 21 [25] or be Stunned."
+      - name: "Shockwave"
+        description: "If the Jel Brute is within 6” of at least two enemies and it did not use Shockwave in its last activation, it will now use this attack. The Jel Brute slams both fists on the ground and the earth itself erupts in the immediate vicinity. All team members within 6” of the Jel Brute must succeed on a Fortitude stat check 21 [25] or suffer 2D6 damage and be Stunned."
+      - name: "Stun Smash"
+        description: "If the Jel Brute activates within 6” of an enemy that is Stunned and it did not utilize Stun Smash during its last activation, and it used Shockwave during its last activation, it will now make a single attack against the Stunned enemy, using Stun Smash (Melee, Combat, 5D6 damage). If this attack hits, the target must roll twice and take the lower result on all attempts to clear the Stunned condition for the remainder of the mission."
 
   - name: Aglandian_Horror
     type: Monstrosity
@@ -120,21 +142,171 @@ enemies:
 
   - name: Centarian_Mauler
     type: Monstrosity
+    flight: False
+    description: Centarian Maulers are massive, standing more than 20 feet high with arms reaching nearly the length of their body. They are powerful fighters and catastrophically destructive, especially when loose in urban areas.
+    health: 150
+    rage: 40
+    defense: 24
+    acuity: 20
+    combat: 22
+    dexterity: 22
+    fortitude: 23
+    psionics: 0
+    abilities:
+      - name: Rock-Hard Skin
+        description: The Centarian Mauler’s skin is capable of withstanding tremendous damage. The Centarian Mauler reduces all damage dealt by Ballistic weapons by 3.
+      - name: Climbing Limbs
+        description: The Centarian Mauler does not pay additional movement when climbing; each 1” of vertical movement counts as 1” of movement.
+      - name: Reverberating Destruction
+        description: Whenever the Centarian Mauler is damaged by a Weapon attack, all enemies within 3” must succeed on a Fortitude stat check 19 [23] or suffer 2D6 damage.
+    actions:
+      - name: "[Basic] Destructive Limbs"
+        description: The Centarian Mauler makes three attacks with its Destructive Limbs (Melee, Combat, 1D6+6 damage). Any enemy hit by this attack must succeed on a Fortitude stat check 22 [26] or be Stunned.
+      - name: Mutilating Wave
+        description: If the Centarian Mauler has two or more enemies within 6” and it did not use Mutilating Wave during its last activation, it will now use this action. All enemies within 6” must succeed on a Fortitude stat check 22 [26] or suffer 2D6+2 damage and be Poisoned.
 
   - name: Talmak_Spawn
     type: Monstrosity
+    flight: False
+    description: The Talmak Spawns are some of the most deceptive, dangerous Monstrosities. They grow from infected humans and look like distended, oversized, and twisted men and women, whose limbs have become terrible weapons.
+    health: 125
+    rage: 30
+    defense: 20
+    acuity: 19
+    combat: 22
+    dexterity: 24
+    fortitude: 20
+    psionics: 18
+    abilities:
+      - name: Twisted Creature (Psionic)
+        description: Whenever the Talmak Spawn suffers damage from a Weapon attack, it suffers 1D6 additional damage. In addition, whenever it suffers this damage, all team members within 18” of the alien must succeed on a Fortitude stat check 18 [22] or suffer 2D6 damage.
+      - name: Psionic Hardening
+        description: The Talmak Spawn reduces all damage from any attack with the Psionic keyword by 3. In addition, the Talmak Spawn may automatically clear one condition at the start of its activation if that condition was caused by a Psionic attack.
+    actions:
+      - name: "[Basic] Psionic Claws (Psionic)"
+        description: The Talmak Spawn makes a single attack with its Psionic Claws (Melee, Combat, Psionic, 4D6+2 damage). If this attack hits, the target must succeed on a Fortitude stat check 18 [22] or suffer 2D6 additional damage and be Stunned.
+      - name: Psionic Wave (Psionic)
+        description: If the Talmak Spawn did not use Psionic Wave during its last activation, it will now use this action. All enemies within 12” of the Talmak Spawn must succeed on a Dexterity stat check 18 [22] or suffer 3D6 damage and be Blinded.
+
   - name: Deranger
     type: Monstrosity
+    flight: False
+    description: Derangers are especially horrifying alien creatures, known for breaking the minds of those who engage them. Their strange Psionic emanations draw forth the worst nightmares of any enemies close to them.
+    health: 135
+    rage: 35
+    defense: 21
+    acuity: 22
+    combat: 18
+    dexterity: 20
+    fortitude: 22
+    psionics: 24
+    abilities:
+      - name: Nightmare Visions (Psionic)
+        description: Whenever an enemy activates within 12” of the Deranger, if they are making a stat check to clear a condition with the Psionic keyword, they must roll twice and use the lower result.
+      - name: Psionic Healing
+        description: The Deranger heals 4 damage whenever an enemy fails a stat check to avoid a condition with the Psionic keyword resulting from an attack made by the Deranger.
+    actions:
+      - name: "[Basic] Psionic Lash (Psionic)"
+        description: The Deranger makes three attacks with its Psionic Lash (Melee, Combat, Psionic, 1D6+2 damage). If this attack hits, the target must succeed on a Dexterity stat check 18 [22] or be Blinded.
+      - name: Nightmare Pulse (Psionic)
+        description: If the Deranger did not use Nightmare Pulse during its last activation, it will now use this action. All enemies within 12” of the Deranger must succeed on a Fortitude stat check 19 [23] or suffer 2D6+2 damage and be Stunned.
+      - name: Deepened Nightmares (Psionic)
+        description: If the Deranger begins its activation with at least one enemy within 12” that is either Stunned or Blinded, it will utilize Deepened Nightmares. That enemy must succeed on a Fortitude Stat check 20 [24] or suffer an additional 5D6 damage and immediately move 12” directly away from the Deranger. If this movement would carry the enemy into Difficult terrain (or up a vertical surface), they must pay for that additional movement as normal. If this movement would carry the enemy into Dangerous terrain, they will suffer any consequences of that as normal. If this movement would move them off of a horizontal surface that is elevated, they will fall and suffer damage as normal, with no chance to reduce it.
+
   - name: Terraformer
     type: Monstrosity
+    flight: False
+    description: The Terraformer is a massive alien Monstrosity that reshapes the very earth around it as it moves. These monsters are especially dangerous in urban areas, as buildings and other urban infrastructure can warp, twist, and collapse, causing catastrophic damage.
+    health: 140
+    rage: 35
+    defense: 22
+    acuity: 18
+    combat: 23
+    dexterity: 20
+    fortitude: 24
+    psionics: 0
+    abilities:
+      - name: Terraform
+        description: All terrain within 18” of the Terraformer is considered Dangerous terrain for enemies. The Terraformer ignores all Difficult and Dangerous terrain.
+      - name: Deadly Terrain
+        description: Whenever a model fails a check for Dangerous terrain while within 18” of the Terraformer (see Dangerous Terrain, page 67), the damage suffered is increased to 2D6 and the roll fails on a 4+ (instead of 5+).
+    actions:
+      - name: "[Basic] Rending Claws"
+        description: The Terraformer makes two attacks with its Rending Claws (Melee, Combat, 2D6+1 damage). If this attack hits, the target must succeed on a Fortitude stat check 17 [21] or suffer 3D6 additional damage and be Stunned.
+      - name: Earth Eruption
+        description: If the Terraformer did not use Earth Eruption during its last activation, it will now use this action. All enemies within 12” of the Terraformer must succeed on a Dexterity stat check 18 [22] or suffer 1D6 damage and be Restrained.
+
   - name: Warping_Crawler
     type: Monstrosity
+    flight: False
+    description: The Warping Crawler is a dangerous foe, due to its incredible movement capabilities. Some who have seen it report it having almost spider-like qualities. Its ability to move and teleport, however, make it extremely rare that one is captured or killed.
+    health: 130
+    rage: 35
+    defense: 20
+    acuity: 25
+    combat: 21
+    dexterity: 25
+    fortitude: 18
+    psionics: 0
+    abilities:
+      - name: Teleport
+        description: Instead of moving, the Warping Crawler may teleport to any location it can see.
+      - name: Surprise Arrival
+        description: Whenever this model teleports within 1” of any enemy and makes an attack against that enemy, it is a Surprise attack.
+    actions:
+      - name: "[Basic] Stabbing Limbs"
+        description: The Warping Crawler makes two attacks with its Stabbing Limbs (Melee, Combat, 2D6+1 damage). If an attack hits, the target must succeed on a Dexterity stat check 19 [23] or be Restrained. If possible, the Warping Crawler must make these two attacks against two separate enemy targets within range.
+      - name: Savored Delicacy
+        description: If the Warping Crawler begins its activation within 1” of an enemy that is Restrained, it will use this action. It teleports to the nearest cover that is not occupied by an enemy. Remove the Restrained enemy from the board and set it up within 1” of the Warping Crawler’s new location. That enemy must succeed on a Fortitude stat check 21 [25] or suffer 4D6 damage and be Stunned.
+
   - name: Zelak
     type: Monstrosity
+    flight: False
+    description: The Zelak is perhaps one of the rarest Monstrosities, with a terrible cruelty to its attacks. It does not simply destroy like other creatures. Rather, it seems to delight in torturing its prey slowly, before eventually finishing it off in gruesome fashion.
+    health: 130
+    rage: 35
+    defense: 21
+    acuity: 24
+    combat: 21
+    dexterity: 22
+    fortitude: 19
+    psionics: 0
+    abilities:
+      - name: "[Basic] Cruel Strikes"
+        description: Whenever the Zelak attacks an enemy that is already damaged, reduce the damage dealt by 2D6 but increase the difficulty of the stat check against any condition it causes by 3 (e.g. if the stat check to avoid the condition described is 20, it will be 23 if the target is already damaged).
+      - name: Gruesome End
+        description: Whenever the Zelak reduces an enemy’s Hit Points to 0 and that enemy is put Out of Action, roll twice on the Injury & Death table during the post-game process and apply both results.
+    actions:
+      - name: Piercing Talons
+        description: The Zelak makes two attacks with its Piercing Talons (Melee, Combat, 4D6 damage). If an attack hits, the target must succeed on a Fortitude stat check 20 [24] or suffer 3D6 additional damage and be Poisoned.
+      - name: Torturous Glee
+        description: If the Zelak begins its activation with an enemy it can see that is Poisoned, it will use this action to attack that enemy instead of its normal actions, as per Enemy AI. If multiple enemies are Poisoned, it will attack the enemy within its movement distance with the lowest remaining Hit Points. It will make a single attack against that enemy, using Piercing Talons. This attack counts as having Surprise and if the Fortitude stat check fails, the enemy is also Stunned.
 
   # Ravagers
   - name: Helion_Beam_Chaser
     type: Ravager
+    flight: False
+    description: The Helion Beam Chaser is a strange creature. It is thin and light, but capable of generating powerful, focused blasts of plasma that can reduce humans to little more than ash. Pair this with the fact that their bodies are capable of defying gravity, and they are a grave danger to unsuspecting populations.
+    health: 110
+    rage: 30
+    defense: 21
+    acuity: 24
+    combat: 21
+    dexterity: 24
+    fortitude: 18
+    psionics: 0
+    abilities:
+      - name: Energy Resistance
+        description: The Helion Beam Chaser reduces all damage from attacks with the Energy type by half (rounding down).
+      - name: Heat Aura
+        description: Any team member that ends their movement within 6” of the Helion Beam Chaser suffers 3D6 Energy damage.
+    actions:
+      - name: "[Basic] Helo Blast"
+        description: The Helion Beam Chaser makes two attacks with its Helo Blast (Ranged, Combat, Energy, 2D6+4 damage). If this attack hits, the target must succeed on a Dexterity stat check 21 [25] or be Blinded.
+      - name: Wave of Heat
+        description: If the Helion Beam Chaser did not use Wave of Heat during its last activation, and if it has at least two enemies within 12”, it will use Wave of Heat. All enemies within 12” of the Helion Beam Chaser must succeed on a Fortitude stat check 21 [25] or be Stunned.
+      - name: Reflecting Blast
+        description: If the Helion Beam Chaser suffered Energy damage since it last activated, and there are not two enemies within 12”, it will use Reflecting Blast. The closest enemy to the Helion Beam Chaser must succeed on a Dexterity stat check 23 [27] or suffer 4D6+6 damage and be Stunned.
 
   - name: Tarskyth
     type: Ravager
@@ -161,10 +333,77 @@ enemies:
 
   - name: Ichor_Spitter
     type: Ravager
+    flight: True
+    description: The aptly-named Ichor Spitter is known for projecting its potent, acidic slime vast distances. This slime melts anything it contacts and is nearly impossible to remove without also melting that surface. Though smaller than many alien creatures, it’s not to be underestimated.
+    health: 110
+    rage: 30
+    defense: 20
+    acuity: 20
+    combat: 23
+    dexterity: 24
+    fortitude: 17
+    psionics: 0
+    abilities:
+      - name: Potent Acid
+        description: The Ichor Spitter ignores cover when making ranged attacks.
+      - name: Acidic Defense
+        description: Whenever the Ichor Spitter suffers Weapon damage, all enemies within 6” suffer 1D6 damage.
+    actions:
+      - name: "[Basic] Acidic Spit"
+        description: The Ichor Spitter makes one attack with its Acidic Spit (Ranged, Combat, 3D6+4 damage), and the target must succeed on a Dexterity stat check 21 [25] or be Blinded.
+      - name: Acid Spray
+        description: If the Ichor Spitter did not utilize Acid Spray during its last activation and there are at least two enemies within 12” of the Ichor Spitter, it will now use Acid Spray. All enemies within 12” of the Ichor Spitter must succeed on a Dexterity stat check 20 [24] or suffer 2D6+2 damage and be Blinded
+
   - name: Spine_Flinger
     type: Ravager
+    flight: False
+    description: The Spine Flinger is dangerous at range and up close, possibly even worse. The Spine Flinger is extremely strong and fast; it attempts to impale and incapacitate its prey as quickly as possible.
+    health: 120
+    rage: 35
+    defense: 22
+    acuity: 20
+    combat: 21
+    dexterity: 20
+    fortitude: 21
+    psionics: 0
+    abilities:
+      - name: Spine Defenses
+        description: Whenever the Spine Flinger suffers damage from a Weapon attack, it reduces that damage by 2.
+      - name: Spinal Impalement
+        description: When attempting to clear a condition caused by a Spine Flinger, team members suffer a -2 penalty to the stat check.
+    actions:
+      - name: "[Basic] Spine Fling"
+        description: The Spine Flinger makes two attacks with its Spine Fling (Ranged, Combat, 2D6+1 damage). If this attack hits, the target must succeed on a Dexterity stat check 21 [25] or be Restrained.
+      - name: Wrenching Impalement
+        description: If the Spine Flinger activates within 12” of an enemy that is Restrained and it did not utilize Wrenching Impalement during its last activation, it will now use Wrenching Impalement. It will move adjacent to the Restrained enemy and that enemy must succeed on a Fortitude stat check 22 [26] or suffer 4D6 damage and be Stunned.
+      - name: Spine Spray
+        description: If the Spine Flinger has been critically hit since its last activation and it did not utilize Spine Spray during its last activation, and there is at least one enemy within 12”, it will use Spine Spray. All enemies within 12” of the Spine Flinger must succeed on a Dexterity stat check 21 [25] or suffer 2D6 damage and be Restrained.
+
   - name: Navite_Warrior
     type: Ravager
+    flight: False
+    description: The Navite Warriors are dumb creatures. They are armed and armored but have very little ability to communicate, unable even to vocalize. They were likely modified shock troops, manipulated into near-mindless killing machines before being turned loose on Earth.
+    health: 120
+    rage: 40
+    defense: 23
+    acuity: 17
+    combat: 24
+    dexterity: 18
+    fortitude: 25
+    psionics: 0
+    abilities:
+      - name: Shock Trooper
+        description: At the start of every activation, the Navite Warrior automatically clears one condition (if there are multiple conditions in effect, randomly determine which one is cleared). The Navite Warrior can still attempt to clear another condition as normal.
+      - name: True Frenzy
+        description: When the Navite Warrior is In Extremis, it may take two additional actions each time it activates. However, it suffers 4D6 damage at the start of each activation. This replaces the normal Step 1 of Ravager AI.
+    actions:
+      - name: "[Basic] Focused Shot"
+        description: The Navite Warrior makes a single attack with Focused Shot (Ranged, Combat, Energy, 3D6+3 damage).
+      - name: Scatter Shot
+        description: If the Navite Warrior did not use Scatter Shot during its last activation and there are at least two enemies within 18”, it will use Scatter Shot. The Navite Warrior makes a single attack against each enemy within 18” that it can see (Ranged, Combat, Energy, 2D6+2 damage). Any target hit by this attack must succeed on a Dexterity stat check 20 [24] or be Blinded.
+      - name: Restraining Shot
+        description: If the Navite Warrior used Scatter Shot during its last activation, it will now use Restraining Shot. Restraining Shot targets the nearest enemy the Navite Warrior can see. That enemy must succeed on a Dexterity stat check 24 [28] or suffer 3D6 damage and be Restrained. In addition, each time the target attempts to clear this Restrained condition and fails, it suffers 3D6 damage.
+
   - name: Pulsar
     type: Ravager
     flight: False
@@ -192,6 +431,27 @@ enemies:
 
   - name: Yvenian_Shocker
     type: Ravager
+    flight: False
+    description: The Yvenian Shocker is a curious being. Like many living creatures, both terrestrial and otherwise, it utilizes electrical currents in its brain and nervous system. Unlike most creatures, however, it is capable of absorbing additional energy and unleashing it in deadly blasts toward its foes.
+    health: 130
+    rage: 40
+    defense: 23
+    acuity: 22
+    combat: 20
+    dexterity: 23
+    fortitude: 17
+    psionics: 0
+    abilities:
+      - name: Energy Defenses
+        description: Whenever the Yvenian Shocker is hit by an attack with the Energy keyword, it reduces all damage suffered by half (rounding down). In addition, increase the number of attacks it makes with its Voltage Blast attack (see below) by one during its next activation.
+      - name: Voltage Rejoinder
+        description: If the Yvenian Shocker is critically hit by any attack, increase the damage during its next activation by 2D6. This is cumulative if the Yvenian Shocker suffers multiple critical hits between its activations, but the bonus applies only to attacks made during its next activation.
+      - name: Shocking Conclusion
+        description: Whenever the Yvenian Shocker is In Extremis, all enemies within 12” suffer damage equal to the In Extremis damage rolled by the Yvenian Shocker.
+    actions:
+      - name: "[Basic] Shocking Blast"
+        description: The Yvenian Shocker makes two attacks with its Shocking Blast (Ranged, Combat, Energy, 2D6+1 damage). If this attack hits, the target must succeed on a Dexterity stat check 20 [24] or be Blinded.
+
   - name: Cannonade
     type: Ravager
     flight: False
@@ -219,20 +479,207 @@ enemies:
 
   - name: Mind_Raker
     type: Ravager
+    flight: False
+    description: The Mind Raker is a very dangerous Psionic enemy. Those without Psionic capabilities report terrible visions and nightmares for years after encountering these creatures, even if they are defeated. Its exact appearance remains a point of great contention, as it seems to manifest differently for each viewer.
+    health: 110
+    rage: 30
+    defense: 21
+    acuity: 24
+    combat: 19
+    dexterity: 22
+    fortitude: 20
+    psionics: 26
+    abilities:
+      - name: Mental Shielding
+        description: Whenever the Mind Raker is hit by an attack that does not have the Psionic keyword, it reduces the damage suffered by 3.
+      - name: Nightmare to Behold
+        description: When an enemy makes an attack against the Mind Raker while within 6” of it, that enemy’s Combat score is treated as 10, unless that score is already lower than 10. If the enemy is currently under the effect of a condition that would reduce their Combat score, this condition is applied before the determination of 10 or lower is made.
+    actions:
+      - name: "[Basic] Mind Stab"
+        description: The Mind Raker makes a single attack with its Mind Stab (Ranged, Psionic, 1D6+2 damage). If this attack hits, the target must succeed on a Fortitude stat check 21 [25] or be Stunned.
+      - name: Visions of Nightmares
+        description: If the Mind Raker activates within 18” of at least two enemies and it did not utilize Visions of Nightmares during its last activation, it will now use Visions of Nightmares. All enemies within 18” of the Mind Raker must succeed on a Dexterity stat check 21 [25] or suffer 2D6 damage and be Blinded. This attack has the Psionic keyword.
+      - name: Overwhelming Visions
+        description: If the Mind Raker activates within 18” of at least one enemy that is Blinded and it did not utilize Overwhelming Visions during its last activation, it will now use Overwhelming Visions. All Blinded enemies within 18” of the Mind Raker must succeed on a Fortitude stat check 24 [28] or suffer 2D6+3 damage and be Stunned. This attack has the Psionic keyword.
+
   # Stalkers
   - name: Chaos_Bringer
     type: Stalker
+    flight: False
+    description: Chaos Bringers have morphing, indeterminate forms. Their very presence brings chaos and instability, and they are extremely dangerous to civilian populations.
+    health: 110
+    rage: 30
+    defense: 21
+    acuity: 25
+    combat: 22
+    dexterity: 20
+    fortitude: 22
+    psionics: 19
+    abilities:
+      - name: Chaos Bringer
+        description: As long as the Chaos Bringer is alive, at the start of each round, add 1 to the roll to determine if a FUBAR event occurs.
+      - name: Chthonic Form
+        description: If an enemy successfully spots the Chaos Bringer while it is Hidden, that enemy suffers 3D6 damage. This damage has the Psionic keyword.
+    actions:
+      - name: "[Basic] Hide"
+        description: The Chaos Bringer becomes Hidden. The Acuity check to spot this Hidden alien creature is 21. The Chaos Bringer will always use this Basic Action if it is not Hidden when it activates, unless it qualifies for Chaotic Maelstrom below (this is instead of the normal Enemy AI).
+      - name: "[Basic] Slamming Limbs"
+        description: The Chaos Bringer makes two attacks with its Slamming Limbs (Melee, Combat, 2D6+1 damage and inflicts Poisoned).
+      - name: Chaotic Maelstrom
+        description: If the Chaos Bringer did not use Chaotic Maelstrom during its last activation, and if it is not Hidden at the start of its activation and there are at least two enemies within 18”, it will use Chaotic Maelstrom. All team members within 18” must succeed on a Fortitude stat check 21 [25] or suffer 2D6+1 damage and be Poisoned. This attack has the Psionic keyword.
+
   - name: Gzurn_Shadow
     type: Stalker
+    flight: False
+    description: The Gzurn Shadow has only ever been encountered at night and in areas of deep darkness. It is a nocturnal predator in the truest sense. Shadows and darkness cling to this creature as it silently stalks its prey. Entire teams from Majestic 13 have disappeared without a trace, and it is only that lack of evidence that signals the presence of a Gzurn Shadow.
+    health: 105
+    rage: 30
+    defense: 20
+    acuity: 26
+    combat: 22
+    dexterity: 25
+    fortitude: 17
+    psionics: 0
+    abilities:
+      - name: Shadow Cloak
+        description: When the Gzurn Shadow is set up, and at the start of each round, it automatically becomes Hidden. The Acuity check to spot a Hidden Gzurn Shadow is 23 [27].
+      - name: One with Darkness
+        description: When an enemy attempts to spot a Gzurn Shadow using an Acuity stat check, they must roll twice and select the lowest result.
+      - name: Wrap in Night
+        description: If the Gzurn Shadow critically hits an enemy with an attack, that enemy is automatically Blinded.
+    actions:
+      - name: "[Basic] Shadow Coils"
+        description: The Gzurn Shadow makes two attacks with its Shadow Coils (Melee, Combat, 1D6+3 damage). If this attack hits, the target must succeed on a Dexterity stat check 22 [26] or be Blinded.
+      - name: Grasping Shadows
+        description: If the Gzurn Shadow did not use Grasping Shadows during its last activation, and it is not Hidden at the start of its activation, it will now use Grasping Shadows. All enemies within 18” must succeed on a Dexterity stat check 20 [24] or suffer 3D6 damage and be Blinded.
+
   - name: Razorlash
     type: Stalker
+    flight: False
+    description: The Razorlash is a strange creature, in that its form seems almost completely inorganic. It would be easy to mistake it for a mechanical construct, but it is in fact a living being. Its form is one of undulating razors and blades that seem to hum slightly in the darkness, as it closes in for the kill.
+    health: 120
+    rage: 35
+    defense: 23
+    acuity: 20
+    combat: 21
+    dexterity: 19
+    fortitude: 22
+    psionics: 0
+    abilities:
+      - name: Stalker
+        description: When the Razorslash is set up, it is automatically Hidden. The Acuity check to spot a Hidden Razorlash is 21.
+      - name: Bladed Reprisal
+        description: When an enemy within 6” of a Razorlash hits with a Weapon attack, that enemy suffers 1D6 damage.
+      - name: Alien Form
+        description: The Razorlash is immune to the Blinded condition and automatically passes any checks to avoid this condition.
+    actions:
+      - name: "[Basic] Bladed Strikes"
+        description: The Razorlash makes two attacks with its Bladed Strikes (Melee, Combat, 1D6+6 damage). If this attack hits, the target must succeed on a Fortitude stat check 21 [25] or be Poisoned.
+      - name: Bladed Frenzy
+        description: If the Razorlash begins its activation and it is not Hidden, and it did not utilize Bladed Frenzy during its last activation, it will now utilize Bladed Frenzy. The Razorlash attacks as per Bladed Strikes. However, it makes four attacks instead of two, and counts as having Surprise for this attack.
+      - name: Strike and Fade
+        description: If the Razorlash begins its activation and it is not Hidden, and it used Bladed Frenzy during its last activation, it will now use Strike and Fade. The Razorlash attacks as per Bladed Strikes. However, it makes one attack instead of two and may immediately move its full movement away from the closest enemy into the nearest cover, if possible. At the end of this movement, it becomes Hidden.
+
   - name: Renvultia_Stalker
     type: Stalker
+    flight: False
+    description: The Renvultia Stalker is an extremely clever creature. It is rarely encountered, often disappearing long before the forces of Majestic 13 are able to intercept it. The few teams who have encountered it describe an alien that moves with incredible speed and strikes with singularly devastating power.
+    health: 110
+    rage: 30
+    defense: 21
+    acuity: 25
+    combat: 23
+    dexterity: 24
+    fortitude: 17
+    psionics: 0
+    abilities:
+      - name: Shadowed Speed
+        description: When the Renvultia Stalker moves more than half its full movement distance (12” or more), if it does not end this movement within 1” of an enemy, it becomes Hidden. The Acuity check to spot a Hidden Renvultia Stalker is 21 [25].
+      - name: Devastating Surprise
+        description: When the Renvultia Stalker makes an attack with Surprise, it deals an additional 2D6 damage.
+    actions:
+      - name: "[Basic] Careful Stalking"
+        description: If the Renvultia Stalker is not Hidden, it becomes Hidden. If it is already Hidden, when the Renvultia Stalker next activates, if it is still Hidden when it makes its first Combat attack, it may roll the Combat stat check twice and take the highest result.
+      - name: "[Basic] Clawed Strike"
+        description: If the Renvultia Stalker has used Careful Stalking twice and is Hidden when it activates, the Renvultia Stalker makes a single attack with its Clawed Strike (Melee, Combat, 3D6+3 damage). If this attack hits, the target must succeed on a Fortitude stat check 23 [27] or be Poisoned.
+      - name: Flurry of Strikes
+        description: If the Renvultia Stalker did not use Flurry of Strikes during its last activation, and it is not Hidden at the start of its activation, it will now use Flurry of Strikes. It will move adjacent to the closest enemy and make a Clawed Strike attack. It will then repeat this process for the next closest enemy, other than the enemy it just attacked. It will repeat this process a maximum of four times, or until it has moved at least 24” during this action, whichever comes first.
+
   - name: Ocular_Enigma
     type: Stalker
+    flight: False
+    description: The Ocular Enigma is a powerful Psionic alien. It does not hide from its enemies in the traditional sense. Instead, it has the psychic ability to mask its visual location, causing those who look upon its actual location to lose even the capacity to see. It then destroys its weakened prey.
+    health: 115
+    rage: 30
+    defense: 21
+    acuity: 24
+    combat: 21
+    dexterity: 19
+    fortitude: 21
+    psionics: 24
+    abilities:
+      - name: Blinding Vision
+        description: Whenever an enemy makes a Weapon attack against the Ocular Enigma, they must succeed on a Dexterity stat check 19 [23] or become Blinded. This stat check to avoid the condition is made before the attack is made and if the stat check is failed, the attacker no longer has line of sight to the enemy and may not attack. They may instead choose a different action for this activation.
+      - name: Blinding Surprise
+        description: The Ocular Enigma counts as Hidden from any enemy with the Blinded condition and has Surprise on any attack made against a Blinded enemy. Unlike normal Hidden, the enemy may not make an Acuity check to spot the Ocular Enigma; they may only clear or remove the Blinded condition, at which point the Ocular Enigma is no longer Hidden.
+      - name: Powerful Vision
+        description: When the Ocular Enigma makes an Acuity stat check to spot a Hidden enemy, it may roll twice and select the best result.
+    actions:
+      - name: "[Basic] Paralyzing Vision"
+        description: The Ocular Enigma makes three attacks with its Paralyzing Vision (Melee, Psionic, 1D6+2 damage). If this attack hits, the target must succeed on a Fortitude stat check 20 [24] or be Stunned.
+      - name: Poisonous Visions
+        description: If the Ocular Enigma did not use Poisonous Visions during its last activation and there are at least two enemies within 18”, it will use Poisonous Visions. The two closest enemies within 18” must succeed on a Fortitude stat check 22 [26] or suffer 2D6 damage and be Poisoned. This attack has the Psionic keyword.
+
   - name: Poisoned_Lasher
     type: Stalker
+    flight: False
+    description: The Poisoned Lasher was named by one of the less creative teams of Majestic 13. It is a clever hunter that likes to drop on its prey from above, using its superior reach and naturally-secreted toxins to weaken its enemies before ultimately consuming them.
+    health: 120
+    rage: 35
+    defense: 20
+    acuity: 23
+    combat: 21
+    dexterity: 20
+    fortitude: 20
+    psionics: 0
+    abilities:
+      - name: Careful Stalker
+        description: When the Poisoned Lasher is set up, it automatically becomes Hidden. The Acuity check to spot a Hidden Poisoned Lasher is 20 [24].
+      - name: Extended Reach
+        description: The Poisoned Lasher can make Combat attacks from 3” instead of the normal 1”. When it moves to an enemy to attack, it will stop its movement at 3” away and then proceed with its normal actions as per Stalker AI.
+      - name: Restraining Killer
+        description: If the Poisoned Lasher successfully hits an enemy that is Restrained, that attack will deal an extra 2D6 damage.
+    actions:
+      - name: "[Basic] Lashing Flurry"
+        description: The Poisoned Lasher makes three attacks with its Lashing Flurry (Melee, Combat, 1D6+1 damage). If this attack hits, the target must succeed on a Dexterity stat check 20 [24] or be Restrained, and a Fortitude stat check 20 [24] or be Poisoned.
+      - name: Drag and Rake
+        description: If the Poisoned Lasher activates with at least one enemy within 6” that is Restrained, and it did not utilize Drag and Rake during its last activation, it will now utilize Drag and Rake. The Restrained enemy is removed from play and the Poisoned Lasher moves its full movement distance away from the previous position of the removed enemy, to the highest vertical point it can reach within its movement distance. The removed enemy is then set up adjacent to the Poisoned Lasher in the Poisoned Lasher’s new position. If there is no room to set up the enemy, reposition the Poisoned Lasher so there is room to set up both models. (i.e. the enemy may not be placed somewhere the model will fall.) The enemy that was removed and re-set suffers 4D6+2 damage.
+      - name: Poison Spray
+        description: If the Poisoned Lasher activates and there are no enemies Restrained within 6”, but there are at least two enemies within 12”, and it did not Utilize Poison Spray during its last activation, it will utilize Poison Spray. All enemies within 12” must succeed on a Fortitude stat check 20 [24] or suffer 1D6 damage and be Poisoned.
+
   - name: Benzith_Night_Bringer
     type: Stalker
-
-
+    flight: False
+    description: This terrifying alien creature personifies the stalker and hunter perhaps best of all. It remains patiently out of sight, until the perfect opportunity presents itself. When it does attack, it blinds its victims, ensuring they have little chance to fight back before they are consumed.
+    health: 105
+    rage: 30
+    defense: 20
+    acuity: 25
+    combat: 21
+    dexterity: 23
+    fortitude: 18
+    psionics: 18
+    abilities:
+      - name: Careful Stalker
+        description: When the Benzith Night Bringer is set up, it automatically becomes Hidden. The Acuity check to spot a Hidden Benzith Night Bringer is 22 [26].
+      - name: Patient Predator
+        description: When the Benzith Night Bringer activates, if there is no enemy within its movement range (i.e. within its Dexterity score in inches, including any additional movement it may have to pay for Difficult terrain or climbing), it will Delay. If it does Delay, it will not utilize its activation, which does not count against its maximum of three activations per turn. Instead, it immediately activates if an enemy moves within its movement range, as above, or if it is revealed from being Hidden. Its activation will happen immediately following the completion of the activation of the triggering enemy. This is an exception to the normal Stalker Enemy AI.
+      - name: Stalker in the Dark
+        description: If the Benzith Night Bringer successfully critically hits an enemy that is Blinded, that attack will deal an extra 6D6 damage.
+    actions:
+      - name: "[Basic] Dark Claws"
+        description: The Benzith Night Bringer makes two attacks with its Dark Claws (Melee, Combat, 2D6 damage). If this attack hits, the target must succeed on a Dexterity stat check 19 [23] or be Blinded.
+      - name: Night Bringer
+        description: If the Benzith Night Bringer was spotted when Hidden since its last activation, or if it begins its turn with at least two enemies within 12”, and it did not utilize Night Bringer during its last activation, it will now utilize Night Bringer. All enemies within 12” must succeed on a Dexterity stat check 19 [23] or suffer 1D6 damage and be Blinded. This attack has the Psionic keyword. The Benzith Night Bringer then becomes Hidden.
+      - name: Final Vision
+        description: If the Benzith Nightbringer activates and there is a Blinded enemy within 12” and it did not utilize Final Vision during its last activation, it will now utilize Final Vision. The Benzith Night Bringer makes a single attack against the Blinded enemy using Final Vision (Melee, Psionic, 4D6+2 damage). If this attack hits, the target must succeed on a Fortitude stat check 19 [23] or be Stunned. As long as they are Stunned, they cannot remove the Blinded condition. In addition, whenever this enemy rolls to clear a condition, they must roll twice and select the lowest result.

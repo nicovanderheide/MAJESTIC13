@@ -17,5 +17,7 @@ public class MissionGenerator {
         log.info("Mission generator");
         EnemyTables enemyTables = YamlReader.readEnemyTables();
         enemyTables.getEnemies().forEach(EnemiesBuilder::create);
+
+        EnemiesBuilder.createMass(enemyTables);
     }
 }
