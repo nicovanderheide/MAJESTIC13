@@ -1,5 +1,5 @@
-name: "B.A.D."
-rating: 4
+name: B.A.D.
+rating: 6
 faction: Industrial_Arms
 base:
   baseType: Military_Command
@@ -8,6 +8,7 @@ base:
     - Alien_Reclamation_and_Research_Facility
     - Advanced_Research_Station
     - REtech_Engineering_Lab
+    - Combat_Training_Facility
   advancedResearchUpgrades:
     - REtech_Weapons
 #    - Psionic_Disruptions
@@ -17,37 +18,37 @@ base:
 #    - Echolocation_Sensors
 advantage: Psionic_Talent
 members:
-  - name: "CMDR: Ben Packer "
-    exp: 4
-    acuity: 17
+  - name: "CMDR: Ben P. Acker"
+    exp: 0
+    acuity: 21
     combat: 18
-    dexterity: 14
+    dexterity: 15
     fortitude: 17
     psionics: 0
     weapons:
-      #    - Pistol
       - Restraining_Taser
     equipment:
       - Scanner
-      - Sighting_HUD
     injuries:
       - "Lost an arm"
 
   - name: "Shane (Brown) Sanderson #2"
-    exp: 2
-    acuity: 13
-    combat: 18
+    exp: 1
+    acuity: 16
+    combat: 20
     dexterity: 14
-    fortitude: 14
+    fortitude: 15
     psionics: 0
     weapons:
-      - Assault_Rifle
+      - REtech_Assault_Rifle
     equipment:
       - Sighting_HUD
-  - name: "Moose Trengganun"
-    exp: 2
-    acuity: 14
-    combat: 18
+      - Targeting_Assist
+
+  - name: Moose Trengganun
+    exp: 1
+    acuity: 17
+    combat: 20
     dexterity: 13
     fortitude: 15
     psionics: 0
@@ -57,32 +58,37 @@ members:
       - Sighting_HUD
       - Targeting_Assist
 
-  - name: "Colin Marcus"
+  - name: Colin Marcus
     exp: 2
-    acuity: 10
-    combat: 17
+    acuity: 13
+    combat: 20
     dexterity: 14
-    fortitude: 14
+    fortitude: 15
     psionics: 0
     weapons:
-      - Assault_Rifle
+      - REtech_Assault_Rifle
     equipment:
       - Sighting_HUD
       - Targeting_Assist
-  - name: "Casey Taylor"
-    exp: 2
-    acuity: 12
-    combat: 17
+
+  - name: Casey Taylor
+    exp: 1
+    acuity: 14
+    combat: 20
     dexterity: 11
-    fortitude: 14
+    fortitude: 15
     psionics: 15
     weapons:
-      - Sniper_Rifle
+      - Heavy_Repeating_Rifle
     equipment:
+      - Sighting_HUD
       - Targeting_Assist
     abilities:
       - Thrust
       - Healing
       - Invisibility
       - Spike
+
+  #    - Pistol
+  # - Sniper_Rifle
   # - Shield

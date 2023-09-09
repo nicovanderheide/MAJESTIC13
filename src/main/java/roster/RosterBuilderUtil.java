@@ -8,25 +8,28 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import data.Team;
 import lombok.extern.slf4j.Slf4j;
-import parser.YamlReader;
+import parser.YamlReaderUtil;
 import roster.decorators.BaseDecorator;
 import roster.decorators.TeamDecorator;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
 @Slf4j
-public class RosterBuilder {
+public final class RosterBuilderUtil {
+    private RosterBuilderUtil() {
+    }
 
     public static void generate(final Path crewFile) {
 
-        String outputFile = crewFile.getFileName().toString().replace(".yml", ".pdf");
+        final String outputFile = crewFile.getFileName().toString().replace(".yml", ".pdf");
         log.info("Generating: {}", outputFile);
-        try (final PdfDocument pdf = new PdfDocument(new PdfWriter(outputFile));
-             final Document document = new Document(pdf, PageSize.A4).setFont(PdfFontFactory.createFont("Courier")).setFontSize(8)
+        try (PdfDocument pdf = new PdfDocument(new PdfWriter(outputFile));
+             Document document = new Document(pdf, PageSize.A4)
+                     .setFont(PdfFontFactory.createFont("Courier"))
+                     .setFontSize(7)
         ) {
-            Team team = YamlReader.read(crewFile);
+            final Team team = YamlReaderUtil.read(crewFile);
             log.info("TEAM: {}", team);
 
             TeamDecorator.addTeamPage(document, team);

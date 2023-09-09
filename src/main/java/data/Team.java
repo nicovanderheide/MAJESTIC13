@@ -5,7 +5,6 @@ import data.enums.BaseUpgrade;
 import data.enums.Faction;
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,7 +17,7 @@ public class Team {
 
     private Set<Member> members;
 
-    public int calculateDmg(Person member) {
+    public int calculateDmg(final Member member) {
         int dmg = faction.getDamageBonus();
         if (base.getBaseUpgrades().contains(BaseUpgrade.Weapons_Depot)) {
             dmg += 1;

@@ -11,11 +11,11 @@ import data.enums.BaseUpgrade;
 
 public class BaseDecorator extends Decorator {
 
-    public static void addBaseDefinitionPage(Document document, Base base) {
+    public static void addBaseDefinitionPage(final Document document, final Base base) {
         document.add(createBaseTypeTable(base.getBaseType()));
 
         int upgrades = 1;
-        for (BaseUpgrade upgrade : base.getBaseUpgrades()) {
+        for (final BaseUpgrade upgrade : base.getBaseUpgrades()) {
             document.add(spacer(1));
             if (upgrades <= base.getBaseType().getMaxUpgrades()) {
                 if (base.getBaseType().getDisallowedUpgrades().contains(upgrade)) {
@@ -30,12 +30,12 @@ public class BaseDecorator extends Decorator {
         }
     }
 
-    private static Table addBaseUpgrade(Base base, BaseUpgrade upgrade) {
-        Table table = new Table(1).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth().setKeepTogether(true);
+    private static Table addBaseUpgrade(final Base base, final BaseUpgrade upgrade) {
+        final Table table = new Table(1).setBorder(new SolidBorder(0.5f)).useAllAvailableWidth().setKeepTogether(true);
         table.addCell(createCell(upgrade.getName()).setBold().setBorder(Border.NO_BORDER).setBorderBottom(new SolidBorder(0.5f)));
         table.addCell(createCell(upgrade.getBenefits()).setBorder(Border.NO_BORDER));
         if (upgrade.equals(BaseUpgrade.Advanced_Research_Station)
-        && null != base.getAdvancedResearchUpgrades()
+                && null != base.getAdvancedResearchUpgrades()
         ) {
             table.addCell(createCell("UNLOCKED UPGRADES:").setBold().setBorder(Border.NO_BORDER));
             base.getAdvancedResearchUpgrades().forEach(advancedResearchUpgrade -> {
@@ -46,13 +46,13 @@ public class BaseDecorator extends Decorator {
         return table;
     }
 
-    private static Table createBaseTypeTable(BaseType base) {
+    private static Table createBaseTypeTable(final BaseType base) {
 
-        Table table = new Table(2).useAllAvailableWidth().setBorder(new SolidBorder(0.5f));
-        table.addCell(createCell("STARTING BASE TYPE:", base,1).setBorder(Border.NO_BORDER));
-        table.addCell(createCell("MAX UPGRADES:", base.getMaxUpgrades(),1).setBorder(Border.NO_BORDER));
+        final Table table = new Table(2).useAllAvailableWidth().setBorder(new SolidBorder(0.5f));
+        table.addCell(createCell("STARTING BASE TYPE:", base, 1).setBorder(Border.NO_BORDER));
+        table.addCell(createCell("MAX UPGRADES:", base.getMaxUpgrades(), 1).setBorder(Border.NO_BORDER));
 
-        table.addCell(createCell("DISALLOWED UPGRADES:", base.getDisallowed(),2).setBorder(Border.NO_BORDER));
+        table.addCell(createCell("DISALLOWED UPGRADES:", base.getDisallowed(), 2).setBorder(Border.NO_BORDER));
 
         table.addCell(createCell("BENEFITS:", base.getOutput(), 2).setBorder(Border.NO_BORDER));
         return table;

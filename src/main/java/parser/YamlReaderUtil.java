@@ -13,16 +13,19 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class YamlReader {
+public final class YamlReaderUtil {
+    private YamlReaderUtil() {
+    }
+
     public static Team read(final Path file) throws IOException {
         try (InputStream inputStream = Files.newInputStream(file)) {
-            Yaml yaml = new Yaml(new Constructor(Team.class));
-            Team team = yaml.load(inputStream);
-            Faction faction = team.getFaction();
+            final Yaml yaml = new Yaml(new Constructor(Team.class));
+            final Team team = yaml.load(inputStream);
+            final Faction faction = team.getFaction();
             while (team.getBase().getBaseUpgrades().size() < team.getBase().getBaseType().getMaxUpgrades()) {
                 team.getBase().getBaseUpgrades().add(BaseUpgrade.Empty);
             }
-            for (Member member : team.getMembers()) {
+            for (final Member member : team.getMembers()) {
                 member.setTeamFaction(faction);
             }
 
@@ -30,11 +33,10 @@ public class YamlReader {
         }
     }
 
-    public static EnemyTables readEnemyTables()  throws IOException {
+    public static EnemyTables readEnemyTables() throws IOException {
         try (InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("enemyTables.yaml")) {
-            Yaml yaml = new Yaml(new Constructor(EnemyTables.class));
-            EnemyTables enemyTables = yaml.load(inputStream);
-            return enemyTables;
+            final Yaml yaml = new Yaml(new Constructor(EnemyTables.class));
+            return yaml.load(inputStream);
         }
     }
 }

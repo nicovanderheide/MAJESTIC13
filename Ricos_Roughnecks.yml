@@ -57,10 +57,10 @@ members:
     fortitude: 13
     psionics: 0
     weapons:
-#      - Pistol
+      #      - Pistol
       - Restraining_Taser
     equipment:
-#      - Shield
+    #      - Shield
     injuries:
       - "Lost an arm"
 

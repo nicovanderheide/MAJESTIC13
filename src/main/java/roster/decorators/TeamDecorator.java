@@ -7,7 +7,7 @@ import data.Team;
 
 public class TeamDecorator extends Decorator {
 
-    public static void addTeamPage(Document document, Team team) {
+    public static void addTeamPage(final Document document, final Team team) {
 
         document.add(createTeamTable(team));
         document.add(spacer(1));
@@ -21,7 +21,7 @@ public class TeamDecorator extends Decorator {
     }
 
     private static Table createTeamTable(final Team team) {
-        Table teamTable = new Table(3).setBorder(Border.NO_BORDER).useAllAvailableWidth();
+        final Table teamTable = new Table(3).setBorder(Border.NO_BORDER).useAllAvailableWidth();
         teamTable.addCell(createCell("TEAM NAME:", team.getName(), 1));
         teamTable.addCell(createCell("FACTION:", team.getFaction().getName(), 1));
         teamTable.addCell(createCell("TEAM RATING:", team.getRating(), 1));

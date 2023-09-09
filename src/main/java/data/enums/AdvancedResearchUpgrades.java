@@ -14,6 +14,7 @@ public enum AdvancedResearchUpgrades {
     Echolocation_Sensors("Whenever a team member is Blinded (see Conditions, page 26), they retain line of sight to any enemies within 6”. They may make Acuity checks as normal to spot Hidden enemies within 6” of their position.");
 
     private final String description;
+
     public String getName() {
         return name().replaceAll("_", " ");
     }

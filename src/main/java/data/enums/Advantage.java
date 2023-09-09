@@ -25,11 +25,11 @@ public enum Advantage {
     Well_Armed,
     ;
 
+    private final String output;
+
     Advantage() {
         output = "";
     }
-
-    private final String output;
 
     public String toString() {
         return name().replaceAll("_", " ");

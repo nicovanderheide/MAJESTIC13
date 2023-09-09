@@ -5,7 +5,11 @@ import lombok.Getter;
 
 import java.util.List;
 
-import static data.enums.BaseUpgrade.*;
+import static data.enums.BaseUpgrade.Advanced_Human_Mind_Data_Storage_Servers;
+import static data.enums.BaseUpgrade.Emergency_Medical_Facility;
+import static data.enums.BaseUpgrade.REtech_Engineering_Lab;
+import static data.enums.BaseUpgrade.Rapid_Deployment_Pad;
+import static data.enums.BaseUpgrade.Upgraded_Point_Defense_System;
 
 @Getter
 @AllArgsConstructor
@@ -35,11 +39,11 @@ public enum BaseType {
     }
 
     public String getDisallowed() {
-        StringBuilder sb = new StringBuilder();
-        for (BaseUpgrade upgrade : disallowedUpgrades) {
-            sb.append(upgrade.getName());
-            sb.append("; ");
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (final BaseUpgrade upgrade : disallowedUpgrades) {
+            stringBuilder.append(upgrade.getName());
+            stringBuilder.append("; ");
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 }
